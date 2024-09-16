@@ -112,15 +112,16 @@
           const resultDiv = document.getElementById("result");
           if (data.status === "success") {
             resultDiv.innerHTML = `<p style="color: green;">${data.message}</p>`;
-            // 登录成功，跳转到 dashboard 页面
+            // 顯示成功訊息並跳轉到 dashboard 頁面
             window.location.href = data.redirect_url;
           } else {
+            // 顯示失敗訊息
             resultDiv.innerHTML = `<p style="color: red;">${data.message}</p>`;
           }
         })
         .catch((error) => {
           const resultDiv = document.getElementById("result");
-          resultDiv.innerHTML = `<p style="color: red;">Error: ${error}</p>`;
+          resultDiv.innerHTML = `<p style="color: red;">發生錯誤: ${error}</p>`;
         });
     });
   });
