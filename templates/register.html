@@ -7,7 +7,16 @@
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
         <div class="card shadow-2-strong" style="border-radius: 1rem">
           <div class="card-body p-5 text-center" id="login-form">
-            <h3 class="mb-5">登入</h3>
+            <h3 class="mb-5">註冊</h3>
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-control form-control-lg"
+              />
+              <label class="form-label" for="name">用戶名</label>
+            </div>
 
             <div data-mdb-input-init class="form-outline mb-4">
               <input
@@ -16,7 +25,7 @@
                 name="email"
                 class="form-control form-control-lg"
               />
-              <label class="form-label" for="typeEmailX-2">EMAIL</label>
+              <label class="form-label" for="typeEmailX-2">Email</label>
             </div>
 
             <div data-mdb-input-init class="form-outline mb-4">
@@ -47,9 +56,9 @@
               data-mdb-ripple-init
               class="btn btn-primary btn-lg btn-block"
               type="button"
-              id="login"
+              id="register"
             >
-              登入
+              註冊
             </button>
 
             <hr class="my-4" />
@@ -61,7 +70,7 @@
               style="background-color: #dd4b39"
               type="button"
             >
-              <i class="fab fa-google me-2"></i> GOOGLE 帳號登入
+              <i class="fab fa-google me-2"></i> GOOGLE 帳號註冊
             </button>
             <button
               data-mdb-button-init
@@ -70,7 +79,7 @@
               style="background-color: #3b5998"
               type="button"
             >
-              <i class="fab fa-facebook-f me-2"></i>facebook 帳號登入
+              <i class="fab fa-facebook-f me-2"></i>facebook 帳號註冊
             </button>
             <div id="result"></div>
           </div>
@@ -84,18 +93,20 @@
 {% block script %}
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const loginButton = document.getElementById("login");
+    const registerButton = document.getElementById("register");
 
-    loginButton.addEventListener("click", function () {
+    registerButton.addEventListener("click", function () {
+      const name = document.getElementById("name").value;
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
 
-      fetch("/login", {
+      fetch("/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          name: name,
           email: email,
           password: password,
         }),

@@ -25,7 +25,11 @@
         <div class="container-fluid d-flex">
           <!-- logo start-->
           <div>
-            <a class="navbar-brand" href="#">GO_PigOut</a>
+            <a
+              class="navbar-brand"
+              href="{{ url_for('index', page_name='index') }}"
+              >GO_PigOut</a
+            >
           </div>
           <!-- logo end -->
           <!-- search  start-->
@@ -45,7 +49,12 @@
             <a class="btn btn-outline-success" role="button" type="button">
               購物車
             </a>
-            <a class="btn btn-outline-success" role="button" type="button">
+            <a
+              href="{{ url_for('render_page', page_name='register') }}"
+              class="btn btn-outline-success"
+              role="button"
+              type="button"
+            >
               註冊
             </a>
             <a
