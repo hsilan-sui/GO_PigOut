@@ -1,13 +1,14 @@
 import os
 from datetime import datetime
 from flask import Flask, render_template, request, jsonify, url_for, abort
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from dotenv import load_dotenv
 from flask_login import UserMixin, LoginManager, login_user, login_required, logout_user, current_user
-from werkzeug.security import generate_password_hash, check_password_hash
 from flask_mail import Mail, Message
 from itsdangerous import URLSafeTimedSerializer
-from dotenv import load_dotenv
+
 
 load_dotenv()  # 自動加載 .env 文件中的變數
 
@@ -69,17 +70,151 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
-# 模型定義
+#Customer模型定義
 class Customer(UserMixin, db.Model):
     __tablename__ = 'Customer'
     
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)  # 自动递增主键
     name = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(255), unique=True, nullable=False)
     phone = db.Column(db.String(20), nullable=True)
     password = db.Column(db.String(255), nullable=False)
     role = db.Column(db.String(50), nullable=True, default='pending')
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    is_verified = db.Column(db.Boolean, default=False)
+
+    # Relationship to Cart and Order
+    carts = db.relationship('Cart', backref='customer', lazy=True)
+    orders = db.relationship('Order', backref='customer', lazy=True)
+
+
+# flask db migrate -m "Add new models for Customer, Vendor, Order, etc." 模型
+class DeliveryPerson(db.Model):
+    __tablename__ = 'DeliveryPerson'
+    
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(255), nullable=True)
+    phone = db.Column(db.String(20), nullable=True)
+    password = db.Column(db.String(255), nullable=True)
+    role = db.Column(db.String(50), nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    
+    # Relationship to Order
+    orders = db.relationship('Order', backref='delivery_person', lazy=True)
+
+
+# Vendor 模型
+class Vendor(db.Model):
+    __tablename__ = 'Vendor'
+    
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(255), nullable=True)
+    address_id = db.Column(db.Integer, db.ForeignKey('Address.id'), nullable=False)  # Address 不能为空
+    phone = db.Column(db.String(20), nullable=True)
+    password = db.Column(db.String(255), nullable=True)
+    role = db.Column(db.String(50), nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    
+    # Relationship to MenuItem and Order
+    menu_items = db.relationship('MenuItem', backref='vendor', lazy=True)
+    orders = db.relationship('Order', backref='vendor', lazy=True)
+
+# MenuItem 模型
+class MenuItem(db.Model):
+    __tablename__ = 'MenuItem'
+    
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    vendor_id = db.Column(db.Integer, db.ForeignKey('Vendor.id'), nullable=False)  # 外键，不能为空
+    name = db.Column(db.String(255), nullable=False)  # MenuItem name 不应为空
+    price = db.Column(db.Numeric(10, 2), nullable=False)  # Price 不应为空
+    description = db.Column(db.Text, nullable=True)
+    available = db.Column(db.Boolean, default=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    
+    # Relationship to CartItem and OrderItem
+    cart_items = db.relationship('CartItem', backref='menu_item', lazy=True)
+    order_items = db.relationship('OrderItem', backref='menu_item', lazy=True)
+
+# Cart 模型
+class Cart(db.Model):
+    __tablename__ = 'Cart'
+    
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    customer_id = db.Column(db.Integer, db.ForeignKey('Customer.id'), nullable=False)  # customer_id 不能为空
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    
+    # Relationship to CartItem
+    cart_items = db.relationship('CartItem', backref='cart', lazy=True)
+
+
+
+# CartItem 模型（假设购物车中的项目）
+class CartItem(db.Model):
+    __tablename__ = 'CartItem'
+    
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    cart_id = db.Column(db.Integer, db.ForeignKey('Cart.id'), nullable=False)
+    menu_item_id = db.Column(db.Integer, db.ForeignKey('MenuItem.id'), nullable=False)
+    quantity = db.Column(db.Integer, nullable=False, default=1)  # 数量不能为空，默认值为1
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+
+#Order 模型
+class Order(db.Model):
+    __tablename__ = 'Order'
+    
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    customer_id = db.Column(db.Integer, db.ForeignKey('Customer.id'), nullable=False)
+    delivery_person_id = db.Column(db.Integer, db.ForeignKey('DeliveryPerson.id'), nullable=True)
+    vendor_id = db.Column(db.Integer, db.ForeignKey('Vendor.id'), nullable=False)
+    total_price = db.Column(db.Numeric(10, 2), nullable=False)  # 总价不能为空
+    status = db.Column(db.String(50), nullable=True)
+    order_time = db.Column(db.DateTime, nullable=True)
+    delivery_time = db.Column(db.DateTime, nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    
+    # Relationship to OrderItem and Payment
+    order_items = db.relationship('OrderItem', backref='order', lazy=True)
+    payments = db.relationship('Payment', backref='order', lazy=True)
+
+
+# OrderItem 模型
+class OrderItem(db.Model):
+    __tablename__ = 'OrderItem'
+    
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    order_id = db.Column(db.Integer, db.ForeignKey('Order.id'), nullable=False)
+    menu_item_id = db.Column(db.Integer, db.ForeignKey('MenuItem.id'), nullable=False)
+    quantity = db.Column(db.Integer, nullable=False, default=1)
+    price = db.Column(db.Numeric(10, 2), nullable=False)  # 每个订单项目的价格不应为空
+
+
+# Payment 模型
+class Payment(db.Model):
+    __tablename__ = 'Payment'
+    
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    order_id = db.Column(db.Integer, db.ForeignKey('Order.id'), nullable=False)
+    payment_method = db.Column(db.String(50), nullable=True)
+    payment_status = db.Column(db.String(50), nullable=True)
+    total_price = db.Column(db.Numeric(10, 2), nullable=False)  # Payment总金额不能为空
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+
+#  Address 模型
+class Address(db.Model):
+    __tablename__ = 'Address'
+    
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    street = db.Column(db.String(255), nullable=True)
+    city = db.Column(db.String(100), nullable=True)
+    postal_code = db.Column(db.String(10), nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    
+    # Relationship to Vendor
+    vendors = db.relationship('Vendor', backref='address', lazy=True)
+
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -98,6 +233,7 @@ def confirm_email(token):
 
     customer = Customer.query.filter_by(email=email).first_or_404()
 
+        
     if customer.role != 'pending':
         return jsonify({"message": "帳號已確認。"}), 200
 
