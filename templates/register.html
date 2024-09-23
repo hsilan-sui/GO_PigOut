@@ -63,7 +63,8 @@
 
             <hr class="my-4" />
 
-            <button
+            <a
+              href="{{ url_for('login_google') }}"
               data-mdb-button-init
               data-mdb-ripple-init
               class="btn btn-lg btn-block btn-primary mb-2"
@@ -71,8 +72,8 @@
               type="button"
             >
               <i class="fab fa-google me-2"></i> GOOGLE 帳號註冊
-            </button>
-            <button
+            </a>
+            <a
               data-mdb-button-init
               data-mdb-ripple-init
               class="btn btn-lg btn-block btn-primary mb-2"
@@ -80,7 +81,7 @@
               type="button"
             >
               <i class="fab fa-facebook-f me-2"></i>facebook 帳號註冊
-            </button>
+            </a>
             <div id="result"></div>
           </div>
         </div>
