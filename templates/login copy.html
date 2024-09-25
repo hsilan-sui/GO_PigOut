@@ -7,16 +7,7 @@
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
         <div class="card shadow-2-strong" style="border-radius: 1rem">
           <div class="card-body p-5 text-center" id="login-form">
-            <h3 class="mb-5">註冊</h3>
-            <div data-mdb-input-init class="form-outline mb-4">
-              <input
-                type="text"
-                id="name"
-                name="name"
-                class="form-control form-control-lg"
-              />
-              <label class="form-label" for="name">用戶名</label>
-            </div>
+            <h3 class="mb-5">登入</h3>
 
             <div data-mdb-input-init class="form-outline mb-4">
               <input
@@ -25,7 +16,7 @@
                 name="email"
                 class="form-control form-control-lg"
               />
-              <label class="form-label" for="typeEmailX-2">Email</label>
+              <label class="form-label" for="typeEmailX-2">EMAIL</label>
             </div>
 
             <div data-mdb-input-init class="form-outline mb-4">
@@ -56,32 +47,31 @@
               data-mdb-ripple-init
               class="btn btn-primary btn-lg btn-block"
               type="button"
-              id="register"
+              id="login"
             >
-              註冊
+              登入
             </button>
 
             <hr class="my-4" />
 
-            <a
-              href="{{ url_for('auth.login_google') }}"
+            <button
               data-mdb-button-init
               data-mdb-ripple-init
               class="btn btn-lg btn-block btn-primary mb-2"
               style="background-color: #dd4b39"
               type="button"
             >
-              <i class="fab fa-google me-2"></i> GOOGLE 帳號註冊
-            </a>
-            <a
+              <i class="fab fa-google me-2"></i> GOOGLE 帳號登入
+            </button>
+            <button
               data-mdb-button-init
               data-mdb-ripple-init
               class="btn btn-lg btn-block btn-primary mb-2"
               style="background-color: #3b5998"
               type="button"
             >
-              <i class="fab fa-facebook-f me-2"></i>facebook 帳號註冊
-            </a>
+              <i class="fab fa-facebook-f me-2"></i>facebook 帳號登入
+            </button>
             <div id="result"></div>
           </div>
         </div>
@@ -94,20 +84,18 @@
 {% block script %}
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const registerButton = document.getElementById("register");
+    const loginButton = document.getElementById("login");
 
-    registerButton.addEventListener("click", function () {
-      const name = document.getElementById("name").value;
+    loginButton.addEventListener("click", function () {
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
 
-      fetch("{{url_for('routes.register')}}", {
+      fetch("/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: name,
           email: email,
           password: password,
         }),

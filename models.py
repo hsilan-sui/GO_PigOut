@@ -1,9 +1,10 @@
 from datetime import datetime
+from extensions import db  # 從 extensions 中匯入 db
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
 
 # 创建数据库实例
-db = SQLAlchemy()
+#db = SQLAlchemy()
 
 # Customer 模型定义
 class Customer(UserMixin, db.Model):
