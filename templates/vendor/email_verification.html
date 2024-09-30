@@ -1,0 +1,7 @@
+{% extends "base.html" %} {% block content %}
+<p>您好,</p>
+<p>感謝您的註冊！請點擊以下鏈接來驗證您的郵箱地址：</p>
+<p><a href="{{ confirm_url }}">{{ confirm_url }}</a></p>
+<p>如果您沒有註冊，請忽略此郵件。</p>
+
+{% endblock content %}

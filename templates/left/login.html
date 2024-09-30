@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+<!-- -->
+{% block content %}
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem">
+          <div class="card-body p-5 text-center" id="login-form">
+            <h3 class="mb-5">登入</h3>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control form-control-lg"
+              />
+              <label class="form-label" for="typeEmailX-2">EMAIL</label>
+            </div>
+
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-control form-control-lg"
+              />
+              <label class="form-label" for="typePasswordX-2">密碼</label>
+            </div>
+
+            <!-- Checkbox -->
+            <div class="form-check d-flex justify-content-start mb-4">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="form1Example3"
+              />
+              <label class="form-check-label" for="form1Example3">
+                記住密碼
+              </label>
+            </div>
+
+            <button
+              data-mdb-button-init
+              data-mdb-ripple-init
+              class="btn btn-primary btn-lg btn-block"
+              type="button"
+              id="login"
+            >
+              登入
+            </button>
+
+            <hr class="my-4" />
+
+            <button
+              data-mdb-button-init
+              data-mdb-ripple-init
+              class="btn btn-lg btn-block btn-primary mb-2"
+              style="background-color: #dd4b39"
+              type="button"
+            >
+              <i class="fab fa-google me-2"></i> GOOGLE 帳號登入
+            </button>
+            <button
+              data-mdb-button-init
+              data-mdb-ripple-init
+              class="btn btn-lg btn-block btn-primary mb-2"
+              style="background-color: #3b5998"
+              type="button"
+            >
+              <i class="fab fa-facebook-f me-2"></i>facebook 帳號登入
+            </button>
+            <div id="result"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
+<!-- -->
+{% block script %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const loginButton = document.getElementById("login");
+
+    loginButton.addEventListener("click", function () {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      fetch("{{ url_for('routes.login') }}", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            // 如果返回404，重定向到404页面
+            window.location.href = "404.html";
+            //throw new Error("HTTP status " + response.status);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          const resultDiv = document.getElementById("result");
+          if (data.status === "success") {
+            resultDiv.innerHTML = `<p style="color: green;">${data.message}</p>`;
+            // 顯示成功訊息並跳轉到 dashboard 頁面
+            window.location.href = data.redirect_url;
+          } else {
+            // 顯示失敗訊息
+            resultDiv.innerHTML = `<p style="color: red;">${data.message}</p>`;
+          }
+        })
+        .catch((error) => {
+          const resultDiv = document.getElementById("result");
+          resultDiv.innerHTML = `<p style="color: red;">發生錯誤: ${error}</p>`;
+        });
+    });
+  });
+</script>
+{% endblock script %}

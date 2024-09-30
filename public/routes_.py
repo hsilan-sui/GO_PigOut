@@ -5,7 +5,7 @@
 
 from flask import Blueprint, render_template, request, jsonify, url_for, redirect
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 from extensions import db, mail, serializer
 from models import Customer
 from flask_mail import Message
@@ -19,31 +19,6 @@ routes_bp = Blueprint('routes', __name__)
 @routes_bp.route("/", endpoint='index')
 def index():
     return render_template('index.html')  # 返回渲染的首頁模板
-
-# 定義郵件確認路由，處理用戶郵箱驗證的鏈接。
-# 當用戶點擊確認鏈接時，這個路由會被觸發。
-@routes_bp.route('/confirm/<token>')
-def confirm_email(token):
-    # 使用預定義的 serializer 來解碼郵件確認的 token
-    email = serializer.loads(token, salt='email-confirmation-salt')
-
-    # 如果 token 無效或過期，返回錯誤信息
-    if not email:
-        return jsonify({"error": "確認鏈接無效或已過期。"}), 400
-
-    # 查找與該 email 對應的用戶，如果找不到則返回 404 錯誤
-    customer = Customer.query.filter_by(email=email).first_or_404()
-
-    # 如果用戶已經驗證過郵箱，則重定向到登錄頁面
-    if customer.is_verified:
-        return redirect(url_for('routes.member_login'))  # 使用 Blueprint 的名稱
-
-    # 如果郵箱未驗證，則設置用戶為已驗證並更新角色為 'customer'
-    customer.is_verified = True
-    customer.role = 'customer'
-    db.session.commit()  # 保存更新到數據庫
-
-    return jsonify({"status": "success", "message": "帳號已驗證成功。"}), 200  # 返回驗證成功的消息
 
 # 定義登錄路由，處理用戶的登錄操作。支持 GET 和 POST 方法。
 @routes_bp.route("/login", methods=["GET", "POST"], endpoint='login')
@@ -75,7 +50,7 @@ def add_customer():
         try:
             # 獲取 POST 請求中的 JSON 數據
             data = request.json
-            print(f"Received data: {data}")  # 打印接收到的數據以便調試
+            #print(f"Received data: {data}")  # 打印接收到的數據以便調試
         except Exception as e:
             # 如果出現錯誤，返回錯誤消息
             return jsonify({"error": f"Failed to parse JSON: {str(e)}"}), 400
@@ -113,11 +88,38 @@ def add_customer():
         # 如果是 GET 請求，返回註冊頁面的模板
         return render_template('register.html')
 
+
+# 定義郵件確認路由，處理用戶郵箱驗證的鏈接。
+# 當用戶點擊確認鏈接時，這個路由會被觸發。
+@routes_bp.route('/confirm/<token>')
+def confirm_email(token):
+    # 使用預定義的 serializer 來解碼郵件確認的 token
+    email = serializer.loads(token, salt='email-confirmation-salt')
+
+    # 如果 token 無效或過期，返回錯誤信息
+    if not email:
+        return jsonify({"error": "確認鏈接無效或已過期。"}), 400
+
+    # 查找與該 email 對應的用戶，如果找不到則返回 404 錯誤
+    customer = Customer.query.filter_by(email=email).first_or_404()
+
+    # 如果用戶已經驗證過郵箱，則重定向到登錄頁面
+    if customer.is_verified:
+        return redirect(url_for('routes.member_login'))  # 使用 Blueprint 的名稱
+
+    # 如果郵箱未驗證，則設置用戶為已驗證並更新角色為 'customer'
+    customer.is_verified = True
+    customer.role = 'customer'
+    db.session.commit()  # 保存更新到數據庫
+
+    return jsonify({"status": "success", "message": "帳號已驗證成功。"}), 200  # 返回驗證成功的消息
+
 # 定義 dashboard 路由，登錄後用戶將被重定向到此頁面
 @routes_bp.route("/dashboard", methods=["GET"], endpoint='dashboard')
+@login_required  # 確保只有登入的用戶能訪問此頁面
 def dashboard():
     # 返回 dashboard 頁面的模板
-    return render_template('dashboard.html')
+    return render_template('dashboard.html', user=current_user)
 
 # 定義發送驗證郵件的輔助函數
 def send_verification_email(user_email):

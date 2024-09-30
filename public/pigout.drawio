@@ -1,0 +1,343 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.6 Safari/605.1.15" version="24.7.16">
+  <diagram name="第 1 页" id="DTJOgRxPjLtVeHN4LmcQ">
+    <mxGraphModel dx="3375" dy="435" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="KzMUu_MZObruPdx-qifB-1" value="&lt;span style=&quot;font-size: 18px;&quot;&gt;app.py&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-310" y="2020" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-2" value="" style="endArrow=none;html=1;rounded=0;shape=link;" edge="1" parent="1" source="KzMUu_MZObruPdx-qifB-41">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-400" y="2120" as="sourcePoint" />
+            <mxPoint x="1740.7692307692307" y="2120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-3" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="-305" y="2100" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-4" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="-760" y="2020" width="340" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-5" value="" style="shape=dataStorage;whiteSpace=wrap;html=1;fixedSize=1;rotation=-180;size=80;" vertex="1" parent="KzMUu_MZObruPdx-qifB-4">
+          <mxGeometry y="5" width="340" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-6" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;當應用程式開始運行時&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;flask --app app run&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="KzMUu_MZObruPdx-qifB-4">
+          <mxGeometry x="100" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-7" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;應用程式的主要入口&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-365" y="2050" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-8" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;shape=link;" edge="1" parent="1" source="KzMUu_MZObruPdx-qifB-10" target="KzMUu_MZObruPdx-qifB-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-290" y="3070" as="sourcePoint" />
+            <mxPoint x="-90" y="2370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-9" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;shape=link;" edge="1" parent="1" source="KzMUu_MZObruPdx-qifB-14" target="KzMUu_MZObruPdx-qifB-10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-290" y="3070" as="sourcePoint" />
+            <mxPoint x="-285" y="2140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-10" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="-300" y="2315" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-11" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;app = Flask(__name__)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="-250" y="2310" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-12" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;引用模組&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;flask&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;extensions&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;models&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;routes&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;auth&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-220" y="2200" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-13" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;shape=link;" edge="1" parent="1" source="KzMUu_MZObruPdx-qifB-19" target="KzMUu_MZObruPdx-qifB-14">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-290" y="3070" as="sourcePoint" />
+            <mxPoint x="-285" y="2345" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-14" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="-300" y="2410" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-15" value="&lt;font style=&quot;font-size: 30px;&quot;&gt;&lt;b&gt;config.py&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-100" y="2410" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-16" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;載入配置模組&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-265" y="2410" width="165" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-17" value="&lt;div&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;app.config.from_object(&quot;config.DevelopmentConfig&quot;)&lt;/font&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;其實上面這段=&amp;gt;在config.py中的class&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;DevelopmentConfig類&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;繼承了class Config類＝&amp;gt; 這裡頭包含&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;a. 應用程式的密鑰&lt;/span&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;b.資料庫的連線與配置&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;c. mail server smtp的連線設置&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;d. google oauth的連線配置&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-220" y="2540" width="720" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-18" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;shape=link;" edge="1" parent="1" source="KzMUu_MZObruPdx-qifB-24" target="KzMUu_MZObruPdx-qifB-19">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-290" y="3561.3333333333335" as="sourcePoint" />
+            <mxPoint x="-285" y="2440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-19" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="-300" y="2690" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-20" value="&lt;font size=&quot;5&quot;&gt;載入擴展模組&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-260" y="2690" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-21" value="&lt;font style=&quot;font-size: 30px;&quot;&gt;&lt;b&gt;extensions.py&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-80" y="2690" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-22" value="&lt;div&gt;&lt;font size=&quot;5&quot;&gt;extensions.py這檔案做的是 產生/實體化各種模組工具的說明書&lt;/font&gt;&lt;/div&gt;&lt;font size=&quot;5&quot;&gt;主要就是初始化/實體化各種Flask模組擴展工具(想像是準備好IKEA各種家具的組裝說明書)&lt;/font&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;管理資料庫的操作說明書 &amp;nbsp; &amp;nbsp; db = SQLAlchemy()&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;資料庫版本遷移說明書 &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; migration = Migrate()&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;管理用戶的登入狀態和會話 &amp;nbsp;login_manager = LoginManager()&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;發送郵件驗證等的說明書 &amp;nbsp; &amp;nbsp; mail = Mail()&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;第三方登入驗證的說明書 &amp;nbsp; &amp;nbsp; oath = OAuth()&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-210" y="2840" width="720" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-23" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;shape=link;" edge="1" parent="1" source="KzMUu_MZObruPdx-qifB-28" target="KzMUu_MZObruPdx-qifB-24">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-290" y="4090" as="sourcePoint" />
+            <mxPoint x="-285" y="2720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-24" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="-305" y="3040" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-25" value="&lt;font size=&quot;5&quot;&gt;將extensions中的各種擴展工具 和 app 應用程式綁定在一起&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-260" y="3040" width="640" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-26" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;在app.py中import extensions.py後，&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;主要目的就是將已經實體化的各種實體化的工具說明書 和&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;我要用來製作的app應用程式綁定在一起，&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;這樣&lt;u&gt;&lt;b&gt;才可以在整個應用程式中使用各工具擴展提供的方法&lt;/b&gt;&lt;/u&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: x-large;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 25px;&quot;&gt;&lt;span style=&quot;&quot;&gt;操作資料庫 &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; db.init_app(&lt;/span&gt;&lt;font style=&quot;font-size: 25px;&quot; color=&quot;#cc0066&quot;&gt;app&lt;/font&gt;&lt;span style=&quot;font-size: x-large;&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;操作資料庫版本遷移 &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;migrate&lt;/font&gt;&lt;span style=&quot;font-size: 25px;&quot;&gt;.init_app(&lt;/span&gt;&lt;font style=&quot;font-size: 25px;&quot; color=&quot;#cc0066&quot;&gt;app, db&lt;/font&gt;&lt;span style=&quot;font-size: x-large;&quot;&gt;)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;操作用戶的登入狀態 &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;login_manager&lt;/font&gt;&lt;span style=&quot;font-size: 25px;&quot;&gt;.init_app(&lt;/span&gt;&lt;font style=&quot;font-size: 25px;&quot; color=&quot;#cc0066&quot;&gt;app&lt;/font&gt;&lt;span style=&quot;font-size: x-large;&quot;&gt;)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;發送郵件驗證 &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; mail&lt;/font&gt;&lt;span style=&quot;font-size: 25px;&quot;&gt;.init_app(&lt;/span&gt;&lt;font style=&quot;font-size: 25px;&quot; color=&quot;#cc0066&quot;&gt;app&lt;/font&gt;&lt;span style=&quot;font-size: x-large;&quot;&gt;)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;第三方google OAutj驗證 &amp;nbsp;oath&lt;/font&gt;&lt;span style=&quot;font-size: 25px;&quot;&gt;.init_app(&lt;/span&gt;&lt;font style=&quot;font-size: 25px;&quot; color=&quot;#cc0066&quot;&gt;app&lt;/font&gt;&lt;span style=&quot;font-size: x-large;&quot;&gt;)&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-220" y="3200" width="720" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-27" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;shape=link;" edge="1" parent="1" source="KzMUu_MZObruPdx-qifB-37" target="KzMUu_MZObruPdx-qifB-28">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-290" y="4440" as="sourcePoint" />
+            <mxPoint x="-290" y="3070" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-28" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="-305" y="3460" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-29" value="&lt;font size=&quot;5&quot;&gt;設定Flask-Login的預設登入頁面的路由&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-240" y="3660" width="430" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-30" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;下行這個作用是指定 如果用戶在沒有登入的情況下試圖訪問受保護的路由(用@login_required裝飾的路由)&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;那Flask-Login會被用戶重定向到 member_login這個路由進行登入&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#cc0066&quot; size=&quot;5&quot;&gt;&lt;b&gt;login_manager.login_view = &#39;routes.member_login&#39;&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-230" y="3740" width="720" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-31" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;&amp;nbsp;&lt;u&gt;&#39;routes.member_login&#39;&amp;nbsp;&lt;/u&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;這表示是在routes.py中 Blueprint裡的member_login 函式&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;當我在routes.py中定義了member_login這個處理會員登入的函式&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;Flask-Login 模組會知道要去哪裡讓用戶進行登入&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-230" y="3880" width="720" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-32" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;&amp;nbsp;例如：我有一個受保護的路由(有寫上@login_required裝飾的路由)&lt;/font&gt;&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;@routes_bp.route(&quot;/dashboard&quot;, method=[&quot;GET&quot;])&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;@login_required&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;def dashboard():&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;return &quot;這是一個受保護的頁面&quot;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;如果未登入的用戶嘗試訪問/dashboard&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;會被Flask-Login重定向到你設置的會員登入介面 /login(routes.member_login&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;對應的路由)&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;&lt;/blockquote&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-260" y="4062" width="760" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-33" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;shape=link;" edge="1" parent="1" target="KzMUu_MZObruPdx-qifB-34">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-290" y="4610" as="sourcePoint" />
+            <mxPoint x="-290" y="3490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-34" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="-305" y="4210" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-35" value="&lt;font size=&quot;5&quot;&gt;定義 user_loader函(&lt;/font&gt;&lt;span style=&quot;font-family: monospace; font-size: 24px;&quot;&gt;@login_manager.user_loader&lt;/span&gt;&lt;font size=&quot;5&quot;&gt;)&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-240" y="4210" width="620" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-36" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;shape=link;" edge="1" parent="1" source="KzMUu_MZObruPdx-qifB-34" target="KzMUu_MZObruPdx-qifB-37">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-290" y="4210" as="sourcePoint" />
+            <mxPoint x="-290" y="3490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-37" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="-305" y="3660" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-38" value="&lt;p style=&quot;font-size: 24px;&quot;&gt;這個函數是 Flask-Login 的一個關鍵部分，稱為&amp;nbsp;&lt;strong&gt;user loader 回調函數&lt;/strong&gt;。&lt;/p&gt;&lt;ul&gt;&lt;li style=&quot;font-size: 24px;&quot;&gt;&lt;strong&gt;作用&lt;/strong&gt;：Flask-Login 需要知道如何從數據庫中加載當前登入的用戶資料&lt;code&gt;@login_manager.user_loader&lt;/code&gt;&amp;nbsp;&lt;/li&gt;&lt;li style=&quot;font-size: 24px;&quot;&gt;定義了當 Flask-Login 根據 session 中存儲的&lt;u&gt;&lt;b&gt;&lt;font color=&quot;#cc0066&quot;&gt;用戶 ID&lt;/font&gt;&lt;/b&gt;&lt;/u&gt; 需要加載用戶時，應該如何從數據庫中找到對應的用戶。&lt;/li&gt;&lt;li style=&quot;font-size: 24px;&quot;&gt;這個函數的返回值會被存放在&amp;nbsp;&lt;code&gt;&lt;b&gt;&lt;font color=&quot;#cc0066&quot;&gt;current_user&lt;/font&gt;&lt;/b&gt;&lt;/code&gt;&amp;nbsp;中，供應用在每個請求期間使用。&lt;/li&gt;&lt;/ul&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-230" y="4380" width="810" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-39" value="&lt;font size=&quot;5&quot;&gt;註冊Blueprint &amp;nbsp;來給路由做管理&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-250" y="3460" width="430" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-40" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;註冊routes.bp 負責管理首頁 註冊 登入等路由&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;app.register_blueprint(&lt;font color=&quot;#cc0066&quot;&gt;routes_bp&lt;/font&gt;)&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;註冊auth_bp 負責管理oauth身份驗證相關的路由 前綴 /auth&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;app.register_blueprint(&lt;font color=&quot;#cc0066&quot;&gt;auth_bp&lt;/font&gt;, url_prefix=&#39;/&lt;font color=&quot;#cc0066&quot;&gt;auth&lt;/font&gt;&#39;)&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 25px;&quot;&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="-230" y="3550" width="720" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-42" value="" style="endArrow=none;html=1;rounded=0;shape=link;" edge="1" parent="1" target="KzMUu_MZObruPdx-qifB-41">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-400" y="2120" as="sourcePoint" />
+            <mxPoint x="1740.7692307692307" y="2120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-41" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="660" y="2100" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-43" value="&lt;span style=&quot;font-size: 18px;&quot;&gt;routes.py&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="660" y="2020" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-44" value="&lt;font size=&quot;4&quot;&gt;&lt;b&gt;頁面對應路由/api 端點&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="600" y="2050" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-45" value="" style="endArrow=classic;html=1;rounded=0;dashed=1;strokeWidth=3;fillColor=#dae8fc;strokeColor=#6c8ebf;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="-10" y="2070" as="sourcePoint" />
+            <mxPoint x="580" y="2070" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-46" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;shape=link;" edge="1" parent="1" source="KzMUu_MZObruPdx-qifB-47" target="KzMUu_MZObruPdx-qifB-41">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="680" y="4102.580645161291" as="sourcePoint" />
+            <mxPoint x="620" y="2280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-48" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;shape=link;" edge="1" parent="1" source="KzMUu_MZObruPdx-qifB-53" target="KzMUu_MZObruPdx-qifB-47">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="680" y="4102.580645161291" as="sourcePoint" />
+            <mxPoint x="680" y="2140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-47" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="665" y="2360" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-50" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;引用模組&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;flask =&amp;gt; blueprint &amp;nbsp;|| &amp;nbsp;render_template &amp;nbsp;|| request. || jsonify || &amp;nbsp;url_ for &amp;nbsp; || &amp;nbsp;redirect. &amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;werkzeug.security =&amp;gt; &amp;nbsp;generate_password_hash &amp;nbsp;||. check_password_hash&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;flask_login =&amp;gt; &amp;nbsp;login_user ||&amp;nbsp;logout_user || login_required || current_user&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;extensions =&amp;gt; db || mail || serializer&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;models&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;flask_mail =&amp;gt; Message&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;datetime&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="710" y="2220" width="760" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-51" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;routes_bp = Blueprint(&#39;routes&#39;, __name__)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="720" y="2360" width="590" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-52" value="&lt;div style=&quot;font-size: 24px;&quot;&gt;&lt;div&gt;&lt;code&gt;&lt;b&gt;&lt;font color=&quot;#cc0066&quot;&gt;routes_bp&lt;/font&gt;&lt;/b&gt; 這組路由管理先前也已經在app應用程式中先註冊好了&lt;br&gt;&lt;/code&gt;&lt;/div&gt;&lt;div&gt;&lt;font face=&quot;monospace&quot;&gt;所以app收到相關路由請求資源，它自動會找管理&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;font-family: monospace;&quot;&gt;routes_bp 相關的路由也就是在 routes.py 尋找&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;code&gt;&lt;br&gt;&lt;/code&gt;&lt;/div&gt;&lt;div&gt;&lt;code&gt;Blueprint(&#39;routes&#39;, __name__)&lt;/code&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;實際上是呼叫了 Blueprint 類別的構造函數，並實體化為&amp;nbsp;&lt;/span&gt;&lt;code&gt;routes_bp&lt;/code&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&amp;nbsp;這組路由就&lt;b&gt;&lt;font color=&quot;#cc0066&quot;&gt;以&lt;/font&gt;&lt;/b&gt;&lt;/span&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&lt;b&gt;&lt;font color=&quot;#cc0066&quot;&gt;&quot;routes&quot; 為名稱&lt;/font&gt;&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="730" y="2530" width="740" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-54" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;shape=link;" edge="1" parent="1" source="KzMUu_MZObruPdx-qifB-57" target="KzMUu_MZObruPdx-qifB-53">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="680" y="4102.580645161291" as="sourcePoint" />
+            <mxPoint x="680" y="2390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-53" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="665" y="2650" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-56" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;首頁路由 ＠routes_bp.route(&quot;/&quot; , endpoint=&quot;index&quot;)&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="720" y="2660" width="580" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-58" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;shape=link;" edge="1" parent="1" source="KzMUu_MZObruPdx-qifB-64" target="KzMUu_MZObruPdx-qifB-57">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="680" y="4102.580645161291" as="sourcePoint" />
+            <mxPoint x="680" y="2730" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-57" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="665" y="2810" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-59" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;登入路由&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;font-size: 24px;&quot;&gt;＠routes_bp.route(&quot;/login&quot; , method=[&quot;GET&quot;,&quot;POST&quot;],endpoint=&quot;login&quot;)&lt;/span&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="720" y="2810" width="860" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-61" value="&lt;div style=&quot;font-size: 24px;&quot;&gt;&lt;div&gt;在&amp;nbsp;&lt;code&gt;member_login&lt;/code&gt;&amp;nbsp;這個函式中，實作了登入功能&lt;/div&gt;&lt;ul&gt;&lt;li&gt;如果前端傳送過來的是&amp;nbsp;&lt;code&gt;POST&lt;/code&gt;&amp;nbsp;請求，會接收前端傳來的json資料&lt;/li&gt;&lt;li&gt;然後透過資料 檢查該使用者是否存在於資料庫，並檢查密碼是否正確&lt;/li&gt;&lt;ul&gt;&lt;li&gt;若正確，則透過&amp;nbsp;&lt;code&gt;&lt;font style=&quot;font-size: 24px;&quot; color=&quot;#cc0066&quot;&gt;&lt;span style=&quot;caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-family: Helvetica;&quot;&gt;flask_login 模組提供的&lt;/span&gt;&lt;b&gt;login_user(customer)&lt;/b&gt;&lt;/font&gt;&lt;/code&gt;將使用者登入&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Flask-Login&lt;/strong&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&amp;nbsp;會自動將該使用者的相關資料保存到&amp;nbsp;&lt;/span&gt;&lt;strong&gt;session&lt;/strong&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&amp;nbsp;中，&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;並且讓&amp;nbsp;&lt;/span&gt;&lt;code&gt;&lt;font color=&quot;#cc0066&quot;&gt;&lt;b&gt;current_user&lt;/b&gt;&lt;/font&gt;&lt;/code&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&lt;font color=&quot;#cc0066&quot;&gt;&lt;b&gt;&amp;nbsp;變成全局可用的變數，這樣你可以在應用的任何地方使用&amp;nbsp;&lt;/b&gt;&lt;/font&gt;&lt;/span&gt;&lt;font color=&quot;#cc0066&quot;&gt;&lt;b&gt;&lt;code&gt;current_user&lt;/code&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&amp;nbsp;來存取當前登入的使用者資料&lt;/span&gt;&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;5&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="730" y="3000" width="1120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-63" value="&lt;div style=&quot;font-size: 24px;&quot;&gt;&lt;div&gt;&lt;font style=&quot;font-size: 24px;&quot; face=&quot;monospace&quot;&gt;詳細解釋一下：&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;h3&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;使用流程：&lt;/font&gt;&lt;/h3&gt;&lt;ol&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;&lt;code&gt;login_user(customer)&lt;/code&gt;：&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;這個函數的作用是將該使用者標記為已登入。&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;它會將使用者的 ID 保存到 session 中，並且將該使用者設為 &quot;當前使用者&quot;。&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;Flask-Login 會自動管理這個過程，無需你手動去處理 session 或 cookie。&lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;strong&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;&lt;code&gt;current_user&lt;/code&gt;：&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;&lt;code&gt;current_user&lt;/code&gt;&amp;nbsp;是 Flask-Login 提供的全局變數，無論你在哪個路由、哪個函數內，只要該使用者處於已登入狀態，你都可以使用&amp;nbsp;&lt;code&gt;current_user&lt;/code&gt;&amp;nbsp;獲取當前使用者的資料。&lt;/font&gt;&lt;/li&gt;&lt;li&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;這個變數會返回你在&amp;nbsp;&lt;code&gt;user_loader&lt;/code&gt;&amp;nbsp;函數中定義的使用者對象。在你的程式中，這是&amp;nbsp;&lt;code&gt;Customer&lt;/code&gt;&amp;nbsp;對象，表示目前的使用者&lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 24px;&quot;&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="740" y="3360" width="1120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-65" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;受保護路由&lt;/font&gt;&lt;/span&gt;&amp;nbsp;&lt;/font&gt;&lt;code&gt;dashboard&lt;/code&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&amp;nbsp;路由會檢查使用者是否已登入，若未登入會被重導到&amp;nbsp;&lt;/span&gt;&lt;code&gt;login_view&lt;/code&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&amp;nbsp;設定的頁面&lt;/span&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="710" y="6020" width="1190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-66" value="&lt;div style=&quot;font-size: 24px;&quot;&gt;&lt;div&gt;&lt;div&gt;@routes_bp.route(&quot;/dashboard&quot;, methods=[&quot;GET&quot;], endpoint=&#39;dashboard&#39;)&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;font color=&quot;#cc0066&quot;&gt;@login_required&amp;nbsp;&lt;/font&gt;&lt;/b&gt;&lt;span style=&quot;font-family: Menlo, Monaco, &amp;quot;Courier New&amp;quot;, monospace; font-size: 18px; white-space: pre;&quot;&gt;&lt;font color=&quot;#cc0066&quot;&gt;&lt;b&gt;# 確保只有登入的用戶能訪問此頁面&lt;/b&gt;&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;def dashboard():&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; return render_template(&#39;dashboard.html&#39;, &lt;font color=&quot;#cc0066&quot;&gt;&lt;b&gt;user=current_user&lt;/b&gt;&lt;/font&gt;)&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="720" y="6140" width="1120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-67" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;shape=link;" edge="1" parent="1" source="KzMUu_MZObruPdx-qifB-78" target="KzMUu_MZObruPdx-qifB-64">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="675" y="4730" as="sourcePoint" />
+            <mxPoint x="680" y="2840" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-64" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="660" y="4062" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-68" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="665" y="3610" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-69" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;註冊路由 @routes_bp.route(&quot;/register&quot;, method=[&quot;GET&quot;,&quot;POST&quot;], endpoint=&quot;register&quot;)&lt;/font&gt;&lt;/span&gt;&amp;nbsp;&lt;/font&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="720" y="3610" width="900" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-73" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;shape=link;" edge="1" parent="1" source="KzMUu_MZObruPdx-qifB-88">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="680" y="6150" as="sourcePoint" />
+            <mxPoint x="675" y="5490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-74" value="&lt;div style=&quot;font-size: 24px;&quot;&gt;&lt;div&gt;&lt;strong&gt;&lt;br&gt;&lt;/strong&gt;&lt;/div&gt;&lt;div&gt;&lt;strong&gt;&lt;br&gt;&lt;/strong&gt;&lt;/div&gt;&lt;div&gt;&lt;strong&gt;&lt;br&gt;&lt;/strong&gt;&lt;/div&gt;&lt;div&gt;&lt;strong&gt;&lt;br&gt;&lt;/strong&gt;&lt;/div&gt;&lt;div&gt;&lt;strong&gt;&lt;br&gt;&lt;/strong&gt;&lt;/div&gt;&lt;div&gt;&lt;strong&gt;若是POST 請求&lt;/strong&gt;&lt;span style=&quot;font-family: -webkit-standard; font-size: medium;&quot;&gt;：&lt;/span&gt;&lt;ol&gt;&lt;li&gt;使用&amp;nbsp;&lt;code&gt;request.json&lt;/code&gt;&amp;nbsp;獲取前端發送的 JSON 資料&lt;/li&gt;&lt;li&gt;驗證用戶提供的&amp;nbsp;&lt;code&gt;name&lt;/code&gt;,&amp;nbsp;&lt;code&gt;email&lt;/code&gt;, 和&amp;nbsp;&lt;code&gt;password&lt;/code&gt;&amp;nbsp;是否齊全&lt;/li&gt;&lt;li&gt;檢查資料庫中是否已存在相同的 email（避免重複註冊）&lt;/li&gt;&lt;li&gt;將用戶密碼使用&amp;nbsp;&lt;code&gt;generate_password_hash&lt;/code&gt;&amp;nbsp;加密&lt;/li&gt;&lt;li&gt;創建一個&amp;nbsp;&lt;code&gt;Customer&lt;/code&gt;&amp;nbsp;對象，將其插入資料庫並提交註冊資料內容&lt;/li&gt;&lt;li&gt;使用&amp;nbsp;&lt;code&gt;send_verification_email&lt;/code&gt;&amp;nbsp;發送註冊驗證郵件，該郵件包含一個驗證用戶郵箱的鏈接（帶有 token）&lt;/li&gt;&lt;li&gt;返回 JSON 請求，通知用戶註冊成功並提示驗證郵件已發送&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="720" y="3790" width="1120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-75" value="&lt;div style=&quot;font-size: 24px;&quot;&gt;&lt;strong style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;若是GET 請求&lt;/font&gt;&lt;font style=&quot;font-size: 24px;&quot; face=&quot;-webkit-standard&quot;&gt;&amp;nbsp;=&amp;gt; 顯示註冊頁面&lt;/font&gt;&lt;/strong&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="720" y="3670" width="345" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-76" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;發送郵件驗證函式（&lt;/span&gt;&lt;code&gt;send_verification_email&lt;/code&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;）&lt;/span&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#dae8fc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="720" y="4062" width="600" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-77" value="&lt;div style=&quot;font-size: 24px;&quot;&gt;&lt;p&gt;這個輔助函式用於生成一個驗證用戶郵箱的&amp;nbsp;&lt;strong&gt;token&lt;/strong&gt;，並將此 token 透過郵件發送給用戶&lt;/p&gt;&lt;h4&gt;發送郵件邏輯：&lt;/h4&gt;&lt;ul&gt;&lt;li&gt;使用&amp;nbsp;&lt;code&gt;serializer&lt;/code&gt;&amp;nbsp;生成一個驗證 token&lt;/li&gt;&lt;li&gt;這個 token 將包含用戶的 email，並且通過&amp;nbsp;&lt;code&gt;salt&lt;/code&gt;&amp;nbsp;鹽值來加密確保安全&lt;/li&gt;&lt;li&gt;將生成的 token 加入到驗證鏈接中，並將該鏈接通過電子郵件發送給用戶&lt;/li&gt;&lt;li&gt;用戶點擊郵件中的鏈接後會觸發&lt;font color=&quot;#cc0066&quot;&gt;&lt;b&gt;&amp;nbsp;&lt;code&gt;confirm_email&lt;/code&gt;&amp;nbsp;路由&lt;/b&gt;&lt;/font&gt;，&lt;font color=&quot;#cc0066&quot;&gt;進行郵箱驗證&lt;/font&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="730" y="4240" width="1120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-79" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;shape=link;" edge="1" parent="1" source="KzMUu_MZObruPdx-qifB-82" target="KzMUu_MZObruPdx-qifB-78">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="675" y="4630" as="sourcePoint" />
+            <mxPoint x="675" y="4092" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-78" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="660" y="4380" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-80" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;郵箱驗證路由 @routes_bp.route(&#39;/confirm/&amp;lt;token&amp;gt;&#39;)&lt;/span&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="720" y="4380" width="600" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-81" value="&lt;div style=&quot;font-size: 24px;&quot;&gt;&lt;p&gt;當用戶點擊郵件中的驗證鏈接時，會觸發這個路由來進行郵箱驗證。&lt;/p&gt;&lt;h4&gt;郵箱驗證邏輯：&lt;/h4&gt;&lt;ul&gt;&lt;li&gt;解析郵件中的 token 來獲取 email。&lt;/li&gt;&lt;li&gt;查找該 email 的用戶，並檢查是否存在。&lt;/li&gt;&lt;li&gt;如果用戶已經驗證過郵箱，則重定向至登錄頁面。&lt;/li&gt;&lt;li&gt;如果用戶尚未驗證，則將其設置為已驗證（&lt;code&gt;is_verified = True&lt;/code&gt;），並更新其角色為&amp;nbsp;&lt;code&gt;customer&lt;/code&gt;。&lt;/li&gt;&lt;li&gt;最後，保存數據庫變更並返回驗證成功的消息&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="740" y="4550" width="1120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-83" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;shape=link;" edge="1" parent="1" target="KzMUu_MZObruPdx-qifB-82">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="675" y="5500" as="sourcePoint" />
+            <mxPoint x="675" y="4410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-82" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="660" y="4780" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-84" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;重發驗證郵件&lt;/span&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&amp;nbsp;@routes_bp.route(&#39;/resend-verity&quot;, method=[&quot;POST&quot;], endpoint=&quot;resend-verify&quot;)&lt;/span&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="720" y="4780" width="980" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-85" value="&lt;div style=&quot;font-size: 24px;&quot;&gt;&lt;h4&gt;核心邏輯：&lt;/h4&gt;&lt;ol&gt;&lt;li&gt;從 POST 請求中獲取用戶的 email。&lt;/li&gt;&lt;li&gt;檢查該 email 對應的用戶是否存在。如果不存在，返回錯誤提示。&lt;/li&gt;&lt;li&gt;檢查該用戶是否已經驗證。如果已經驗證，提示無需重發驗證郵件。&lt;/li&gt;&lt;li&gt;如果用戶尚未驗證，則調用&amp;nbsp;&lt;code&gt;send_verification_email&lt;/code&gt;&amp;nbsp;函數來重新發送驗證郵件。&lt;/li&gt;&lt;li&gt;返回成功消息提示郵件已重新發送。&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="745" y="4910" width="1120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-86" value="&lt;font size=&quot;5&quot; face=&quot;-webkit-standard&quot;&gt;前端介面&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="730" y="5060" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-87" value="&lt;div style=&quot;font-size: 24px;&quot;&gt;&lt;h4&gt;在註冊成功後：&lt;/h4&gt;&lt;h4&gt;&lt;ol style=&quot;font-weight: 400;&quot;&gt;&lt;li&gt;當用戶完成註冊後，你可以在頁面上顯示一個 &quot;重發驗證郵件&quot; 的按鈕或鏈接，讓用戶可以重新請求發送驗證郵件。&lt;/li&gt;&lt;li&gt;當用戶點擊 &quot;重發驗證郵件&quot; 按鈕時，向剛才的&amp;nbsp;&lt;code&gt;resend_verification_email&lt;/code&gt;&amp;nbsp;路由發送 POST 請求&lt;/li&gt;&lt;/ol&gt;&lt;/h4&gt;&lt;h4&gt;前端步驟：&lt;/h4&gt;&lt;h4&gt;&lt;ol style=&quot;font-weight: 400;&quot;&gt;&lt;li&gt;用戶點擊 &quot;重發驗證郵件&quot; 按鈕。&lt;/li&gt;&lt;li&gt;使用 JavaScript 發送一個 POST 請求到&amp;nbsp;&lt;code&gt;/resend-verification&lt;/code&gt;，並將 email 作為請求數據發送。&lt;/li&gt;&lt;li&gt;後端檢查 email 並決定是否重發驗證郵件，返回成功或錯誤消息。&lt;/li&gt;&lt;li&gt;前端根據返回的消息提示用戶操作結果&lt;/li&gt;&lt;/ol&gt;&lt;/h4&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="745" y="5290" width="1120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-89" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;shape=link;" edge="1" parent="1" source="KzMUu_MZObruPdx-qifB-93" target="KzMUu_MZObruPdx-qifB-88">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="675" y="6330" as="sourcePoint" />
+            <mxPoint x="675" y="5490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-88" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="660" y="6020" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-90" value="&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;郵件的有效期處理&lt;/font&gt;&lt;/span&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="740" y="5540" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-91" value="&lt;div style=&quot;font-size: 24px;&quot;&gt;&lt;h4&gt;Token 有效期&lt;/h4&gt;&lt;h4&gt;&lt;p style=&quot;font-weight: 400;&quot;&gt;你可以使用&amp;nbsp;&lt;code&gt;itsdangerous&lt;/code&gt;&amp;nbsp;的&amp;nbsp;&lt;code&gt;TimedJSONWebSignatureSerializer&lt;/code&gt;&amp;nbsp;來設置驗證 token 的有效期。&lt;/p&gt;&lt;p style=&quot;font-weight: 400;&quot;&gt;例如，設置 token 的有效期為 1 天（86400 秒）：&lt;/p&gt;&lt;/h4&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="760" y="5650" width="1120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-92" value="&lt;div style=&quot;font-size: 24px;&quot;&gt;&lt;h4&gt;&lt;font color=&quot;#994c00&quot;&gt;from itsdangerous import TimedJSONWebSignatureSerializer as Serializer&lt;/font&gt;&lt;/h4&gt;&lt;h4&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;font color=&quot;#994c00&quot;&gt;# 在 extensions.py 中定義一個有時間限制的 Serializer&lt;/font&gt;&lt;/span&gt;&lt;/h4&gt;&lt;h4&gt;&lt;font color=&quot;#994c00&quot;&gt;serializer = Serializer(&#39;default_secret_key&#39;, expires_in=86400)&lt;/font&gt;&lt;/h4&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="860" y="5830" width="1120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-94" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;shape=link;" edge="1" parent="1" target="KzMUu_MZObruPdx-qifB-93">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="670" y="7150" as="sourcePoint" />
+            <mxPoint x="675" y="6050" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-93" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="660" y="6240" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-95" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;登出路由&lt;/font&gt;&lt;/span&gt;&lt;/font&gt;&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fillColor=#fff2cc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="710" y="6240" width="1190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-96" value="&lt;div style=&quot;font-size: 24px;&quot;&gt;&lt;div&gt;&lt;div&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;登出路由使用 Flask-Login 的&amp;nbsp;&lt;/span&gt;&lt;code&gt;logout_user()&lt;/code&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&amp;nbsp;函式來執行登出操作&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;登出後可以將用戶重定向到首頁或者登錄頁面&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;h3&gt;&lt;strong&gt;核心邏輯&lt;/strong&gt;：&lt;/h3&gt;&lt;ol&gt;&lt;li&gt;&lt;strong&gt;登出檢查&lt;/strong&gt;：使用&amp;nbsp;&lt;code&gt;@login_required&lt;/code&gt;&amp;nbsp;確保只有已經登入的用戶可以執行登出操作。&lt;/li&gt;&lt;li&gt;&lt;strong&gt;登出操作&lt;/strong&gt;：調用&amp;nbsp;&lt;code&gt;logout_user()&lt;/code&gt;&amp;nbsp;函數來登出當前登入的用戶。這個函數會清除用戶的 session。&lt;/li&gt;&lt;li&gt;&lt;strong&gt;重定向&lt;/strong&gt;：登出後，將用戶重定向到首頁或者登錄頁面，你可以根據需求調整重定向的路徑&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;步驟 1：新增登出路由&lt;/span&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;br&gt;&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;# 定義登出路由，處理用戶的登出操作。&lt;/span&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span class=&quot;hljs-meta&quot;&gt;@routes_bp.route(&lt;span class=&quot;hljs-params&quot;&gt;&lt;span class=&quot;hljs-string&quot;&gt;&quot;/logout&quot;&lt;/span&gt;, methods=[&lt;span class=&quot;hljs-string&quot;&gt;&quot;GET&quot;&lt;/span&gt;], endpoint=&lt;span class=&quot;hljs-string&quot;&gt;&#39;logout&#39;&lt;/span&gt;&lt;/span&gt;)&lt;/span&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;hljs-meta&quot;&gt;@login_required&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;# 確保只有已經登入的用戶可以訪問登出路由&lt;/span&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;def&lt;/span&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span class=&quot;hljs-title function_&quot;&gt;logout&lt;/span&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;():&amp;nbsp;&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;# 使用 Flask-Login 提供的 logout_user 函數來執行登出&lt;/span&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&amp;nbsp;logout_user()&amp;nbsp;&lt;/span&gt;&lt;span class=&quot;hljs-comment&quot;&gt;# 將用戶重定向到首頁，或者你可以選擇重定向到登錄頁面&lt;/span&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;redirect(url_for(&lt;/span&gt;&lt;span class=&quot;hljs-string&quot;&gt;&#39;routes.index&#39;&lt;/span&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;))&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-family: -webkit-standard;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;h3&gt;&lt;strong&gt;步驟 2：前端 UI&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;在你的前端（例如模板&amp;nbsp;&lt;code&gt;dashboard.html&lt;/code&gt;&amp;nbsp;或其他有登入狀態的頁面）中，你可以添加一個登出按鈕來讓用戶執行登出操作。這個按鈕會發送一個 GET 請求到&amp;nbsp;&lt;code&gt;/logout&lt;/code&gt;&amp;nbsp;路徑&lt;/p&gt;&lt;p&gt;&amp;lt;a href=&quot;{{ url_for(&#39;routes.logout&#39;) }}&quot; class=&quot;btn btn-danger&quot;&amp;gt;登出&amp;lt;/a&amp;gt;&lt;/p&gt;&lt;p&gt;當用戶點擊 &quot;登出&quot; 按鈕時，會發送一個 GET 請求到&amp;nbsp;&lt;code&gt;/logout&lt;/code&gt;，然後後端會執行登出操作，並將用戶重定向到首頁或登錄頁面。&lt;/p&gt;&lt;h3&gt;&lt;strong&gt;總結&lt;/strong&gt;：&lt;/h3&gt;&lt;ol&gt;&lt;li&gt;使用&amp;nbsp;&lt;code&gt;logout_user()&lt;/code&gt;&amp;nbsp;函數來實現用戶的登出。&lt;/li&gt;&lt;li&gt;用戶登出後可以選擇重定向到首頁或登錄頁面。&lt;/li&gt;&lt;li&gt;需要在前端提供一個登出按鈕，讓用戶能夠方便地執行登出操作&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="730" y="6800" width="1120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KzMUu_MZObruPdx-qifB-97" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="KzMUu_MZObruPdx-qifB-96" target="KzMUu_MZObruPdx-qifB-96">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
