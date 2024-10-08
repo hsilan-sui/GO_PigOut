@@ -1,5 +1,5 @@
 '''
-放置所有與客戶相關的路由，比如註冊、登入等
+放置與訂餐客戶相關的路由
 '''
 
 from flask import Blueprint, render_template, request, jsonify, url_for, redirect
@@ -61,6 +61,7 @@ def add_customer():
         name = data.get("name") # 用戶名
         email = data.get("email") # email 
         password = data.get("password") # 密碼 
+        confirm_password = data.get("confirm_password")
         role = data.get("role")
 
          # 檢查是否提供了所有必填字段
@@ -71,9 +72,8 @@ def add_customer():
         existing_customer = Customer.query.filter_by(email=email).first()
         if existing_customer:
             return jsonify({"error": "該 email 已被註冊"}), 400
-
-        # 確保前後端密碼一致
-        if data.get("password") != data.get("confirm_password"):
+        
+        if password != confirm_password:
             return jsonify({"error": "兩次輸入的密碼不一致"}), 400
 
         # 對密碼進行哈希加密 werkzeug.security 提供的generate_password_hash() method選擇使用pbkdf2:sha256
@@ -103,8 +103,7 @@ def confirm_email(token):
     try:
         # 使用預定義的 serializer 來解碼郵件確認的 token
         email = serializer.loads(token, salt='email-confirmation-salt')
-        print(f"解碼後的 email: {email}")  # 調試
-
+        
         # 查找與該 email 對應的用戶
         customer = Customer.query.filter_by(email=email).first_or_404()
         print(f"找到的用戶: {customer.email}, 驗證狀態: {customer.is_verified}")  # 調試

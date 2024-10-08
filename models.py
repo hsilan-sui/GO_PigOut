@@ -17,7 +17,6 @@ class Customer(UserMixin, db.Model):
     google_id = db.Column(db.String(255), unique=True, nullable=True)  # 保存 Google ID
     password = db.Column(db.String(255), nullable=True)  # 第三方登录时可以为空
     role = db.Column(db.String(50), nullable=True, default='pending')
-    #created_at = db.Column(db.DateTime, default=datetime.utcnow)
     created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
     is_verified = db.Column(db.Boolean, default=False)
 
@@ -26,33 +25,37 @@ class Customer(UserMixin, db.Model):
     orders = db.relationship('Order', backref='customer', lazy=True)
 
 # DeliveryPerson 模型定义
-class DeliveryPerson(db.Model):
+class DeliveryPerson(UserMixin,db.Model):
     __tablename__ = 'DeliveryPerson'
     
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(255), nullable=True)
+    email = db.Column(db.String(255), unique=True, nullable=False)
     phone = db.Column(db.String(20), nullable=True)
     password = db.Column(db.String(255), nullable=True)
     role = db.Column(db.String(50), nullable=True)
     #created_at = db.Column(db.DateTime, default=datetime.utcnow)
     created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
+    google_id = db.Column(db.String(255), unique=True, nullable=True)  # 保存 Google ID
+    is_verified = db.Column(db.Boolean, default=False)
     
     # 关联到 Order
     orders = db.relationship('Order', backref='delivery_person', lazy=True)
 
 # Vendor 模型定义
-class Vendor(db.Model):
+class Vendor(UserMixin, db.Model):
     __tablename__ = 'Vendor'
     
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(255), nullable=True)
-    address_id = db.Column(db.Integer, db.ForeignKey('Address.id'), nullable=False)
+    email = db.Column(db.String(255), unique=True, nullable=False)
+    address_id = db.Column(db.Integer, db.ForeignKey('Address.id'), nullable=True) # 先改成True後面再處理
     phone = db.Column(db.String(20), nullable=True)
     password = db.Column(db.String(255), nullable=True)
     role = db.Column(db.String(50), nullable=True)
-    #created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    google_id = db.Column(db.String(255), unique=True, nullable=True)  # 保存 Google ID
     created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
-    
+    is_verified = db.Column(db.Boolean, default=False)
     # 关联到 MenuItem 和 Order
     menu_items = db.relationship('MenuItem', backref='vendor', lazy=True)
     orders = db.relationship('Order', backref='vendor', lazy=True)

@@ -3,7 +3,7 @@ from extensions import db, migrate, login_manager, mail, oauth
 #from routes import routes_bp  # 匯入自定義的主路由 Blueprint
 from routes import home_bp, customer_bp, vendor_bp, delivery_bp # 匯入拆分的 Blueprint
 from auth import auth_bp  # 匯入自定義的身份驗證（Google OAuth） Blueprint
-from models import Customer  # 匯入 Customer 模型，用來管理數據庫中的客戶數據
+from models import * # 匯入 Customer 模型，用來管理數據庫中的客戶數據
 
 # 初始化 Flask 應用
 app = Flask(__name__)
@@ -48,12 +48,13 @@ app.register_blueprint(auth_bp, url_prefix='/auth')
 #login_manager.login_view = 'routes.member_login'
 login_manager.login_view = 'customer.login'  # 修改為 customer_bp 中的 login 路由
 
-
 # 定義 user_loader 函數，這個函數用於從數據庫中根據用戶 ID 加載用戶
 # Flask-Login 會自動調用此函數來查找當前登錄的用戶
 @login_manager.user_loader
 def load_user(user_id):
-    return Customer.query.get(int(user_id))  # 根據用戶 ID 從數據庫中查找用戶
+    user = Customer.query.get(int(user_id)) or Vendor.query.get(int(user_id)) or DeliveryPerson.query.get(int(user_id))
+    return user
+
 
 # 打印應用中所有的 URL 路由規則，方便調試和確認路由設置
 # for rule in app.url_map.iter_rules():

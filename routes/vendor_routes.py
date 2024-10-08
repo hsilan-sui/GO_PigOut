@@ -1,3 +1,6 @@
+'''
+放置與餐廳業者相關的路由
+'''
 from flask import Blueprint, render_template, request, jsonify, url_for, redirect
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required, current_user
@@ -21,14 +24,22 @@ def vendor_login():
         vendor = Vendor.query.filter_by(email=email).first()
 
         if vendor and check_password_hash(vendor.password, password):
-            login_user(vendor)# 使用 Flask-Login 的 login_user 函數進行登錄
+            login_user(vendor,remember=True)# 使用 Flask-Login 的 login_user 函數進行登錄
+            print(current_user.is_authenticated)  # 應該返回 True
+
             # 返回登錄成功的消息並跳轉到 dashboard 頁面
-            return jsonify({"status": "success", "message": "餐廳供應商登錄成功！", "redirect_url": url_for('vendor.dashboard')}), 200
+            return jsonify({"status": "success", "message": "餐廳業者登錄成功！", "redirect_url": url_for('vendor.dashboard')}), 200
         else:
-            return jsonify({"status": "fail", "message": "帳號或密碼錯誤"}), 404
+            # 如果用戶不存在或密碼錯誤，返回錯誤消息
+            return jsonify({"status": "fail", "message": "帳號或密碼錯誤","redirect_url": url_for('shared.404')}), 404
     else:
         return render_template('shared/login.html')
 
+# 定義 dashboard 路由
+@vendor_bp.route("/dashboard", methods=["GET"], endpoint='dashboard')
+@login_required # 確保只有登入的用戶才能訪問權限
+def dashboard():
+    return render_template('vendor/dashboard.html', user=current_user)
 
 # 註冊新供應商
 @vendor_bp.route("/register", methods=["GET", "POST"], endpoint='register')
@@ -38,6 +49,9 @@ def add_vendor():
         name = data.get("name")
         email = data.get("email")
         password = data.get("password")
+        confirm_password = data.get("confirm_password")
+        role = data.get("role")
+        print(data)
 
         if not name or not email or not password:
             return jsonify({"error": "缺少必填字段"}), 400
@@ -45,9 +59,14 @@ def add_vendor():
         existing_vendor = Vendor.query.filter_by(email=email).first()
         if existing_vendor:
             return jsonify({"error": "該 email 已被註冊"}), 400
-
+        
+        if password != confirm_password:
+            return jsonify({"error": "兩次輸入的密碼不一致"}), 400
+        
+    
         hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
-        new_vendor = Vendor(name=name, email=email, password=hashed_password, role='pending', created_at=datetime.utcnow())
+
+        new_vendor = Vendor(name=name, email=email, password=hashed_password, role=role, created_at=datetime.now(timezone.utc))
 
         db.session.add(new_vendor)
         db.session.commit()
@@ -61,35 +80,46 @@ def add_vendor():
 # 郵件驗證
 @vendor_bp.route('/confirm/<token>')
 def confirm_email(token):
-    email = serializer.loads(token, salt='email-confirmation-salt')
+    try:
+        email = serializer.loads(token, salt='email-confirmation-salt')
+        print(f"解碼後的 email: {email}")  # 調試
 
-    if not email:
-        return jsonify({"error": "確認鏈接無效或已過期。"}), 400
+        vendor = Vendor.query.filter_by(email=email).first_or_404()
+        print(f"找到的用戶： {vendor.email}, 驗證狀態: {vendor.is_verified}")
 
-    vendor = Vendor.query.filter_by(email=email).first_or_404()
+        if not vendor.is_verified:
+            vendor.is_verified = True
+            db.session.commit()
+            print("用戶已驗證成功")
 
-    if vendor.is_verified:
-        return redirect(url_for('vendor.vendor_login'))
+        role = vendor.role
+        redirect_url = url_for('customer.login',role=role)
 
-    vendor.is_verified = True
-    vendor.role = 'vendor'
-    db.session.commit()
+        return render_template('shared/verification_success.html',redirect_url=redirect_url,role=role)
+     
+    except Exception as e:
+        print(f"驗證失敗：{e}")
+        return jsonify({"error": "確認連接無效或已經過期"}),400
 
-    return jsonify({"status": "success", "message": "帳號已驗證成功。"}), 200
-
-
-# 定義 dashboard 路由
-@vendor_bp.route("/dashboard", methods=["GET"], endpoint='dashboard')
-@login_required
-def dashboard():
-    return render_template('vendor/dashboard.html', vendor_user=current_user)
 
 
 # 發送驗證郵件
 def send_verification_email(user_email):
     token = serializer.dumps(user_email, salt='email-confirmation-salt')
+
     confirm_url = url_for('vendor.confirm_email', token=token, _external=True)
-    html = render_template('vendor/email_verification.html', confirm_url=confirm_url)
+
+    html = render_template('shared/email_verification.html', confirm_url=confirm_url)
+
     subject = "請確認你的郵件"
+
     msg = Message(subject=subject, recipients=[user_email], html=html)
+
     mail.send(msg)
+
+
+@vendor_bp.route("/logout", methods=['GET'], endpoint="logout")
+@login_required #確保登入權限
+def member_logout():
+    logout_user()
+    return redirect(url_for('customer.login')) 
