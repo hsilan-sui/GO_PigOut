@@ -22,7 +22,7 @@
                   aria-controls="customer"
                   aria-selected="true"
                 >
-                  客戶註冊
+                  點餐會員
                 </button>
               </li>
               <li class="nav-item" role="presentation">
@@ -36,7 +36,7 @@
                   aria-controls="vendor"
                   aria-selected="false"
                 >
-                  供應商註冊
+                  上架餐廳
                 </button>
               </li>
               <li class="nav-item" role="presentation">
@@ -50,231 +50,76 @@
                   aria-controls="delivery"
                   aria-selected="false"
                 >
-                  外送員註冊
+                  外送夥伴
                 </button>
               </li>
             </ul>
 
-            <!-- Tab content for different roles -->
-            <div class="tab-content" id="registerTabContent">
-              <!-- 客戶註冊 -->
-              <div
-                class="tab-pane fade show active"
-                id="customer"
-                role="tabpanel"
-                aria-labelledby="customer-tab"
-              >
-                <form id="customer-register-form" class="my-4">
-                  <div class="form-outline mb-4">
-                    <input
-                      type="text"
-                      id="customer-name"
-                      class="form-control form-control-lg"
-                    />
-                    <label class="form-label" for="customer-name">用戶名</label>
-                  </div>
-                  <div class="form-outline mb-4">
-                    <input
-                      type="email"
-                      id="customer-email"
-                      class="form-control form-control-lg"
-                    />
-                    <label class="form-label" for="customer-email">Email</label>
-                  </div>
-                  <div class="form-outline mb-4">
-                    <input
-                      type="password"
-                      id="customer-password"
-                      class="form-control form-control-lg"
-                    />
-                    <label class="form-label" for="customer-password"
-                      >密碼</label
-                    >
-                  </div>
-                  <div>
-                    <button
-                      class="btn btn-primary btn-lg btn-block"
-                      type="button"
-                      id="customer-register"
-                    >
-                      註冊 (客戶)
-                    </button>
-                  </div>
-
-                  <div>
-                    <a
-                      href="{{ url_for('auth.login_google') }}"
-                      data-mdb-button-init
-                      data-mdb-ripple-init
-                      class="btn btn-lg btn-block btn-primary mb-2"
-                      style="background-color: #dd4b39"
-                      type="button"
-                    >
-                      <i class="fab fa-google me-2"></i> GOOGLE 帳號登入
-                    </a>
-                  </div>
-
-                  <div>
-                    <a
-                      data-mdb-button-init
-                      data-mdb-ripple-init
-                      class="btn btn-lg btn-block btn-primary mb-2"
-                      style="background-color: #3b5998"
-                      type="button"
-                    >
-                      <i class="fab fa-facebook-f me-2"></i>facebook 帳號登入
-                    </a>
-                  </div>
-                  <div id="result"></div>
-                </form>
+            <!-- 共用的表單結構 -->
+            <form id="register-form" class="my-4">
+              <div class="form-outline mb-4">
+                <input
+                  type="text"
+                  id="name"
+                  class="form-control form-control-lg"
+                />
+                <label class="form-label" for="name">用戶名</label>
               </div>
-
-              <!-- 供應商註冊 -->
-              <div
-                class="tab-pane fade"
-                id="vendor"
-                role="tabpanel"
-                aria-labelledby="vendor-tab"
-              >
-                <form id="vendor-register-form" class="my-4">
-                  <div class="form-outline mb-4">
-                    <input
-                      type="text"
-                      id="vendor-name"
-                      class="form-control form-control-lg"
-                    />
-                    <label class="form-label" for="vendor-name">用戶名</label>
-                  </div>
-                  <div class="form-outline mb-4">
-                    <input
-                      type="email"
-                      id="vendor-email"
-                      class="form-control form-control-lg"
-                    />
-                    <label class="form-label" for="vendor-email">Email</label>
-                  </div>
-                  <div class="form-outline mb-4">
-                    <input
-                      type="password"
-                      id="vendor-password"
-                      class="form-control form-control-lg"
-                    />
-                    <label class="form-label" for="vendor-password">密碼</label>
-                  </div>
-                  <div>
-                    <button
-                      class="btn btn-primary btn-lg btn-block"
-                      type="button"
-                      id="vendor-register"
-                    >
-                      註冊 (供應商)
-                    </button>
-                  </div>
-
-                  <div>
-                    <a
-                      href="{{ url_for('auth.login_google') }}"
-                      data-mdb-button-init
-                      data-mdb-ripple-init
-                      class="btn btn-lg btn-block btn-primary mb-2"
-                      style="background-color: #dd4b39"
-                      type="button"
-                    >
-                      <i class="fab fa-google me-2"></i> GOOGLE 帳號登入
-                    </a>
-                  </div>
-
-                  <div>
-                    <a
-                      data-mdb-button-init
-                      data-mdb-ripple-init
-                      class="btn btn-lg btn-block btn-primary mb-2"
-                      style="background-color: #3b5998"
-                      type="button"
-                    >
-                      <i class="fab fa-facebook-f me-2"></i>facebook 帳號登入
-                    </a>
-                  </div>
-                  <div id="result"></div>
-                </form>
+              <div class="form-outline mb-4">
+                <input
+                  type="email"
+                  id="email"
+                  class="form-control form-control-lg"
+                />
+                <label class="form-label" for="email">Email</label>
               </div>
-
-              <!-- 外送員註冊 -->
-              <div
-                class="tab-pane fade"
-                id="delivery"
-                role="tabpanel"
-                aria-labelledby="delivery-tab"
-              >
-                <form id="delivery-register-form" class="my-4">
-                  <div class="form-outline mb-4">
-                    <input
-                      type="text"
-                      id="delivery-name"
-                      class="form-control form-control-lg"
-                    />
-                    <label class="form-label" for="delivery-name">用戶名</label>
-                  </div>
-                  <div class="form-outline mb-4">
-                    <input
-                      type="email"
-                      id="delivery-email"
-                      class="form-control form-control-lg"
-                    />
-                    <label class="form-label" for="delivery-email">Email</label>
-                  </div>
-                  <div class="form-outline mb-4">
-                    <input
-                      type="password"
-                      id="delivery-password"
-                      class="form-control form-control-lg"
-                    />
-                    <label class="form-label" for="delivery-password"
-                      >密碼</label
-                    >
-                  </div>
-
-                  <div>
-                    <button
-                      class="btn btn-primary btn-lg btn-block"
-                      type="button"
-                      id="delivery-register"
-                    >
-                      註冊 (外送員)
-                    </button>
-                  </div>
-
-                  <div>
-                    <a
-                      href="{{ url_for('auth.login_google') }}"
-                      data-mdb-button-init
-                      data-mdb-ripple-init
-                      class="btn btn-lg btn-block btn-primary mb-2"
-                      style="background-color: #dd4b39"
-                      type="button"
-                    >
-                      <i class="fab fa-google me-2"></i> GOOGLE 帳號登入
-                    </a>
-                  </div>
-
-                  <div>
-                    <a
-                      data-mdb-button-init
-                      data-mdb-ripple-init
-                      class="btn btn-lg btn-block btn-primary mb-2"
-                      style="background-color: #3b5998"
-                      type="button"
-                    >
-                      <i class="fab fa-facebook-f me-2"></i>facebook 帳號登入
-                    </a>
-                  </div>
-                  <div id="result"></div>
-                </form>
+              <div class="form-outline mb-4">
+                <input
+                  type="password"
+                  id="password"
+                  class="form-control form-control-lg"
+                />
+                <label class="form-label" for="password">密碼</label>
               </div>
+              <div class="form-outline mb-4">
+                <input
+                  type="password"
+                  id="confirm-password"
+                  class="form-control form-control-lg"
+                />
+                <label class="form-label" for="confirm-password"
+                  >再次輸入密碼</label
+                >
+              </div>
+              <button
+                class="btn btn-primary btn-lg btn-block"
+                type="button"
+                id="register-btn"
+              >
+                註冊 (訂餐會員)
+              </button>
+              <div id="result"></div>
+            </form>
+
+            <!-- 社交帳號登入按鈕 -->
+            <div>
+              <a
+                href="{{ url_for('auth.login_google') }}"
+                class="btn btn-lg btn-block btn-primary mb-2"
+                style="background-color: #dd4b39"
+                type="button"
+              >
+                <i class="fab fa-google me-2"></i> GOOGLE 帳號登入
+              </a>
+              <a
+                href="#"
+                class="btn btn-lg btn-block btn-primary mb-2"
+                style="background-color: #3b5998"
+                type="button"
+              >
+                <i class="fab fa-facebook-f me-2"></i>facebook 帳號登入
+              </a>
             </div>
-
-            <!-- 註冊結果區域 -->
-            <div id="result"></div>
           </div>
         </div>
       </div>
@@ -287,79 +132,90 @@
 {% block script %}
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    // 通用的註冊處理函數
-    function handleRegister(role, nameId, emailId, passwordId, url) {
-      const name = document.getElementById(nameId).value;
-      const email = document.getElementById(emailId).value;
-      const password = document.getElementById(passwordId).value;
+    const registerForm = document.getElementById("register-form");
+    const registerBtn = document.getElementById("register-btn");
+    const resultDiv = document.getElementById("result");
+    let role = "customer"; // 預設角色
+    let actionUrl = "/customer/register"; // 初始化的 actionUrl
+    console.log("good test");
 
-      fetch(url, {
+    // 動態更新表單的 action 和按鈕文本
+    document
+      .getElementById("registerTab")
+      .addEventListener("click", function (e) {
+        console.log("good1");
+        const selectedTab = e.target.id.split("-")[0];
+        console.log("good2");
+        console.log(selectedTab);
+        //定義變數
+        let btnText;
+
+        switch (selectedTab) {
+          case "customer":
+            actionUrl = "/customer/register"; // 設置為完整路徑
+            btnText = "註冊 (訂餐會員)";
+            role = selectedTab;
+            break;
+          case "vendor":
+            actionUrl = "/vendor/register"; // 假設你也有 /vendor 路徑
+            btnText = "註冊 (餐廳業者)";
+            role = selectedTab;
+            break;
+          case "delivery":
+            actionUrl = "/delivery/register"; // 假設你也有 /delivery 路徑
+            btnText = "註冊 (外送夥伴)";
+            role = selectedTab;
+            break;
+        }
+
+        console.log("現在發送請求的角色是:", selectedTab, role); // Debug selected tab
+        console.log("傳送請求的API Action URL:", actionUrl); // Debug action URL
+
+        // 更新表單的 action 和按鈕文本
+        registerForm.setAttribute("action", actionUrl); // 更新 action 屬性
+        // 更新按鈕文本
+        registerBtn.innerText = btnText;
+      });
+
+    // 點擊註冊按鈕時 => 處理註冊請求
+    registerBtn.addEventListener("click", function (e) {
+      e.preventDefault(); // 防止表單默認提交行為
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirm-password").value;
+
+      // 檢查兩次輸入的密碼是否一致
+      if (password !== confirmPassword) {
+        resultDiv.innerHTML = `<p style="color: red;">兩次輸入的密碼不一致</p>`;
+        return;
+      }
+
+      // 發送 POST 請求
+      fetch(actionUrl, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name: name, email: email, password: password }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+          confirm_password: confirmPassword,
+          role,
+        }),
       })
-        .then((response) => {
-          if (!response.ok) {
-            window.location.href = "404.html";
-          }
-          return response.json();
-        })
+        .then((response) => response.json())
         .then((data) => {
-          const resultDiv = document.getElementById("result");
           if (data.status === "success") {
-            resultDiv.innerHTML = `<p style="color: green;">${role} 註冊成功！</p>`;
+            resultDiv.innerHTML = `<p style="color: green;">註冊成功！</p>`;
             window.location.href = data.redirect_url;
           } else {
             resultDiv.innerHTML = `<p style="color: red;">${data.message}</p>`;
           }
         })
         .catch((error) => {
-          document.getElementById(
-            "result"
-          ).innerHTML = `<p style="color: red;">發生錯誤: ${error}</p>`;
+          resultDiv.innerHTML = `<p style="color: red;">發生錯誤: ${error}</p>`;
         });
-    }
-
-    // 客戶註冊事件
-    document
-      .getElementById("customer-register")
-      .addEventListener("click", function () {
-        handleRegister(
-          "客戶",
-          "customer-name",
-          "customer-email",
-          "customer-password",
-          "{{ url_for('customer.register') }}"
-        );
-      });
-
-    // 供應商註冊事件
-    document
-      .getElementById("vendor-register")
-      .addEventListener("click", function () {
-        handleRegister(
-          "供應商",
-          "vendor-name",
-          "vendor-email",
-          "vendor-password",
-          "{{ url_for('vendor.register') }}"
-        );
-      });
-
-    // 外送員註冊事件
-    document
-      .getElementById("delivery-register")
-      .addEventListener("click", function () {
-        handleRegister(
-          "外送員",
-          "delivery-name",
-          "delivery-email",
-          "delivery-password",
-          "{{ url_for('delivery.register') }}"
-        );
-      });
+    });
   });
 </script>
 {% endblock script %}

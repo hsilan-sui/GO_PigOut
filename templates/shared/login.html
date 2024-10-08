@@ -1,12 +1,10 @@
-{% extends 'shared/base.html' %}
-<!-- -->
-{% block content %}
+{% extends 'shared/base.html' %} {% block content %}
 <div class="container py-5 h-100">
   <div class="row d-flex justify-content-center align-items-center h-100">
     <div class="col-12 col-md-8 col-lg-6 col-xl-5">
       <div class="card shadow-2-strong" style="border-radius: 1rem">
         <div class="card-body p-5 text-center">
-          <h3 class="mb-5">登入</h3>
+          <h3 class="mb-5" id="form-title">登入</h3>
 
           <!-- Bootstrap Nav Tabs for roles -->
           <ul class="nav nav-tabs" id="loginTab" role="tablist">
@@ -18,8 +16,6 @@
                 data-bs-target="#customer"
                 type="button"
                 role="tab"
-                aria-controls="customer"
-                aria-selected="true"
               >
                 客戶登入
               </button>
@@ -32,8 +28,6 @@
                 data-bs-target="#vendor"
                 type="button"
                 role="tab"
-                aria-controls="vendor"
-                aria-selected="false"
               >
                 供應商登入
               </button>
@@ -46,231 +40,160 @@
                 data-bs-target="#delivery"
                 type="button"
                 role="tab"
-                aria-controls="delivery"
-                aria-selected="false"
               >
                 外送員登入
               </button>
             </li>
           </ul>
 
-          <!-- Tab content for different roles -->
-          <div class="tab-content" id="loginTabContent">
-            <!-- 客戶登入 -->
-            <div
-              class="tab-pane fade show active"
-              id="customer"
-              role="tabpanel"
-              aria-labelledby="customer-tab"
-            >
-              <form
-                id="customer-login-form"
-                action="{{ url_for('customer.login') }}"
-                method="POST"
-                class="my-4"
-              >
-                <div class="form-outline mb-4">
-                  <input
-                    type="email"
-                    id="customer-email"
-                    class="form-control form-control-lg"
-                    name="email"
-                    required
-                  />
-                  <label class="form-label" for="customer-email">Email</label>
-                </div>
-                <div class="form-outline mb-4">
-                  <input
-                    type="password"
-                    id="customer-password"
-                    class="form-control form-control-lg"
-                    name="password"
-                    required
-                  />
-                  <label class="form-label" for="customer-password">密碼</label>
-                </div>
-                <div>
-                  <button
-                    type="submit"
-                    class="btn btn-primary btn-lg btn-block"
-                  >
-                    登入 (客戶)
-                  </button>
-                </div>
-
-                <div>
-                  <a
-                    href="{{ url_for('auth.login_google') }}"
-                    data-mdb-button-init
-                    data-mdb-ripple-init
-                    class="btn btn-lg btn-block btn-primary mb-2"
-                    style="background-color: #dd4b39"
-                    type="button"
-                  >
-                    <i class="fab fa-google me-2"></i> GOOGLE 帳號登入
-                  </a>
-                </div>
-
-                <div>
-                  <a
-                    data-mdb-button-init
-                    data-mdb-ripple-init
-                    class="btn btn-lg btn-block btn-primary mb-2"
-                    style="background-color: #3b5998"
-                    type="button"
-                  >
-                    <i class="fab fa-facebook-f me-2"></i>facebook 帳號登入
-                  </a>
-                </div>
-                <div id="result"></div>
-              </form>
+          <!-- 共用的表單 -->
+          <form id="login-form" class="my-4">
+            <div class="form-outline mb-4">
+              <input
+                type="email"
+                id="email"
+                class="form-control form-control-lg"
+                name="email"
+                required
+              />
+              <label class="form-label" for="email">Email</label>
             </div>
-
-            <!-- 供應商登入 -->
-            <div
-              class="tab-pane fade"
-              id="vendor"
-              role="tabpanel"
-              aria-labelledby="vendor-tab"
-            >
-              <form
-                id="vendor-login-form"
-                action="{{ url_for('vendor.login') }}"
-                method="POST"
-                class="my-4"
-              >
-                <div class="form-outline mb-4">
-                  <input
-                    type="email"
-                    id="vendor-email"
-                    class="form-control form-control-lg"
-                    name="email"
-                    required
-                  />
-                  <label class="form-label" for="vendor-email">Email</label>
-                </div>
-                <div class="form-outline mb-4">
-                  <input
-                    type="password"
-                    id="vendor-password"
-                    class="form-control form-control-lg"
-                    name="password"
-                    required
-                  />
-                  <label class="form-label" for="vendor-password">密碼</label>
-                </div>
-
-                <div>
-                  <button
-                    type="submit"
-                    class="btn btn-primary btn-lg btn-block"
-                  >
-                    登入 (供應商)
-                  </button>
-                </div>
-
-                <div>
-                  <a
-                    href="{{ url_for('auth.login_google') }}"
-                    data-mdb-button-init
-                    data-mdb-ripple-init
-                    class="btn btn-lg btn-block btn-primary mb-2"
-                    style="background-color: #dd4b39"
-                    type="button"
-                  >
-                    <i class="fab fa-google me-2"></i> GOOGLE 帳號登入
-                  </a>
-                </div>
-
-                <div>
-                  <a
-                    data-mdb-button-init
-                    data-mdb-ripple-init
-                    class="btn btn-lg btn-block btn-primary mb-2"
-                    style="background-color: #3b5998"
-                    type="button"
-                  >
-                    <i class="fab fa-facebook-f me-2"></i>facebook 帳號登入
-                  </a>
-                </div>
-                <div id="result"></div>
-              </form>
+            <div class="form-outline mb-4">
+              <input
+                type="password"
+                id="password"
+                class="form-control form-control-lg"
+                name="password"
+                required
+              />
+              <label class="form-label" for="password">密碼</label>
             </div>
-
-            <!-- 外送員登入 -->
-            <div
-              class="tab-pane fade"
-              id="delivery"
-              role="tabpanel"
-              aria-labelledby="delivery-tab"
+            <button
+              type="button"
+              class="btn btn-primary btn-lg btn-block"
+              id="submit-btn"
             >
-              <form
-                id="delivery-login-form"
-                action="{{ url_for('delivery.login') }}"
-                method="POST"
-                class="my-4"
-              >
-                <div class="form-outline mb-4">
-                  <input
-                    type="email"
-                    id="delivery-email"
-                    class="form-control form-control-lg"
-                    name="email"
-                    required
-                  />
-                  <label class="form-label" for="delivery-email">Email</label>
-                </div>
-                <div class="form-outline mb-4">
-                  <input
-                    type="password"
-                    id="delivery-password"
-                    class="form-control form-control-lg"
-                    name="password"
-                    required
-                  />
-                  <label class="form-label" for="delivery-password">密碼</label>
-                </div>
+              登入 (客戶)
+            </button>
+          </form>
 
-                <div>
-                  <button
-                    type="submit"
-                    class="btn btn-primary btn-lg btn-block"
-                  >
-                    登入 (外送員)
-                  </button>
-                </div>
-
-                <div>
-                  <a
-                    href="{{ url_for('auth.login_google') }}"
-                    data-mdb-button-init
-                    data-mdb-ripple-init
-                    class="btn btn-lg btn-block btn-primary mb-2"
-                    style="background-color: #dd4b39"
-                    type="button"
-                  >
-                    <i class="fab fa-google me-2"></i> GOOGLE 帳號登入
-                  </a>
-                </div>
-
-                <div>
-                  <a
-                    data-mdb-button-init
-                    data-mdb-ripple-init
-                    class="btn btn-lg btn-block btn-primary mb-2"
-                    style="background-color: #3b5998"
-                    type="button"
-                  >
-                    <i class="fab fa-facebook-f me-2"></i>facebook 帳號登入
-                  </a>
-                </div>
-                <div id="result"></div>
-              </form>
-            </div>
+          <!-- 社交登入按鈕 -->
+          <div>
+            <a
+              href="{{ url_for('auth.login_google') }}"
+              class="btn btn-lg btn-block btn-primary mb-2"
+              style="background-color: #dd4b39"
+            >
+              <i class="fab fa-google me-2"></i> GOOGLE 帳號登入
+            </a>
+            <a
+              href="#"
+              class="btn btn-lg btn-block btn-primary mb-2"
+              style="background-color: #3b5998"
+            >
+              <i class="fab fa-facebook-f me-2"></i> Facebook 帳號登入
+            </a>
           </div>
+
+          <div id="result"></div>
         </div>
       </div>
     </div>
   </div>
 </div>
-{% endblock content %}
+{% endblock content %} {% block script %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const loginForm = document.getElementById("login-form");
+    const submitBtn = document.getElementById("submit-btn");
+    let role = "customer"; // 預設用戶
+    let actionUrl = "/customer/login"; // 初始化的 actionUrl
+    console.log("good test");
+
+    // 根據 URL 中的 role 參數自動選擇對應的標籤
+    const urlParams = new URLSearchParams(window.location.search);
+    const roleFromUrl = urlParams.get("role");
+
+    if (roleFromUrl === "vendor") {
+      document.getElementById("vendor-tab").click();
+      actionUrl = "/vendor/login";
+      role = "vendor";
+    } else if (roleFromUrl === "delivery") {
+      document.getElementById("delivery-tab").click();
+      actionUrl = "/delivery/login";
+      role = "delivery";
+    } else {
+      document.getElementById("customer-tab").click();
+      actionUrl = "/customer/login";
+      role = "customer";
+    }
+
+    loginForm.setAttribute("action", actionUrl); // 設置表單的 action
+
+    // 根據選中的角色更新表單 action 和按鈕文字
+    document.getElementById("loginTab").addEventListener("click", function (e) {
+      console.log("good1");
+      const selectedTab = e.target.id.split("-")[0];
+      console.log("good2");
+      let actionUrl, btnText;
+
+      switch (selectedTab) {
+        case "customer":
+          actionUrl = "/customer/login";
+          btnText = "登入 (客戶)";
+          role = selectedTab;
+          break;
+        case "vendor":
+          actionUrl = "/vendor/login";
+          btnText = "登入 (供應商)";
+          role = selectedTab;
+          break;
+        case "delivery":
+          actionUrl = "/delivery/login";
+          btnText = "登入 (外送員)";
+          role = selectedTab;
+          break;
+      }
+      console.log("現在登入請求的角色是:", selectedTab, role); // Debug selected tab
+      console.log("傳送請求的API Action URL:", actionUrl); // Debug action URL
+      // 更新表單 action 和按鈕文本
+      loginForm.setAttribute("action", actionUrl);
+      submitBtn.innerText = btnText;
+    });
+
+    //點擊登入按鈕後 發送post請求
+    submitBtn.addEventListener("click", function (e) {
+      e.preventDefault(); // 防止表單默認提交行為
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      //發送post請求
+      fetch(loginForm.getAttribute("action"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data); // 調試用
+          if (data.status === "success") {
+            console.log(data.redirect_url);
+            window.location.href = data.redirect_url;
+          } else {
+            document.getElementById(
+              "result"
+            ).innerHTML = `<p style="color: red;">${data.message}</p>`;
+          }
+        })
+        .catch((error) => {
+          document.getElementById(
+            "result"
+          ).innerHTML = `<p style="color: red;">發生錯誤: ${error}</p>`;
+        });
+    });
+  });
+</script>
+{% endblock script %}

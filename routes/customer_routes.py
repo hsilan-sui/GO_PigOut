@@ -32,7 +32,10 @@ def member_login():
         # 如果用戶存在且密碼匹配，則進行登錄
         if customer and check_password_hash(customer.password, password):
             login_user(customer)  # 使用 Flask-Login 的 login_user 函數進行登錄
-            # 返回登錄成功的消息並跳轉到 dashboard 頁面
+
+            #傳遞到前端的參數一律用user
+            print(url_for('customer.dashboard'))
+            # 返回登錄成功的消息並跳轉到 dashboard 頁面，這裡返回 JSON 格式
             return jsonify({"status": "success", "message": "登錄成功！", "redirect_url": url_for('customer.dashboard')}), 200
         else:
             # 如果用戶不存在或密碼錯誤，返回錯誤消息
@@ -40,17 +43,25 @@ def member_login():
     else:
         # 如果是 GET 請求，返回登錄頁面的模板
         return render_template('shared/login.html')
-    
-#註冊新用戶，支持 GET 和 POST 方法
+
+
+# 定義 dashboard 路由
+@customer_bp.route("/dashboard", methods=["GET"], endpoint='dashboard')
+@login_required # 確保只有登入的用戶能訪問此頁面
+def dashboard():
+    return render_template('customer/dashboard.html', user=current_user)
+
+#註冊新訂餐用戶，GET ＆POST 
 @customer_bp.route("/register", methods=["GET", "POST"], endpoint='register')
 def add_customer():
-    # 處理 POST 請求以創建新用戶
+    # 處理訂餐用戶從前端傳來的 POST 請求 => 以創建新用戶
     if request.method == 'POST':
         # 獲取 POST 請求中的 JSON 數據
         data = request.json
-        name = data.get("name")
-        email = data.get("email")
-        password = data.get("password")
+        name = data.get("name") # 用戶名
+        email = data.get("email") # email 
+        password = data.get("password") # 密碼 
+        role = data.get("role")
 
          # 檢查是否提供了所有必填字段
         if not name or not email or not password:
@@ -61,11 +72,15 @@ def add_customer():
         if existing_customer:
             return jsonify({"error": "該 email 已被註冊"}), 400
 
-        # 對密碼進行哈希加密
+        # 確保前後端密碼一致
+        if data.get("password") != data.get("confirm_password"):
+            return jsonify({"error": "兩次輸入的密碼不一致"}), 400
+
+        # 對密碼進行哈希加密 werkzeug.security 提供的generate_password_hash() method選擇使用pbkdf2:sha256
         hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
 
         # 創建新的用戶實例
-        new_customer = Customer(name=name, email=email, password=hashed_password, role='pending', created_at=datetime.now(timezone.utc))
+        new_customer = Customer(name=name, email=email, password=hashed_password, role=role, created_at=datetime.now(timezone.utc))
 
         # 將新用戶添加到數據庫並提交事務
         db.session.add(new_customer)
@@ -73,8 +88,10 @@ def add_customer():
 
         send_verification_email(new_customer.email)
 
+        #flash / sweetalert
         return jsonify({"status": "success", "message": "註冊成功。驗證郵件已發送到你的信箱。", "redirect_url": url_for('customer.dashboard')}), 201
     else:
+        # 如果是GET 註冊頁面 就去共用模板找shared/register.html
         return render_template('shared/register.html')
     
 # 定義郵件確認路由，處理用戶郵箱驗證的鏈接。
@@ -83,32 +100,33 @@ def add_customer():
 # 郵件驗證
 @customer_bp.route('/confirm/<token>')
 def confirm_email(token):
-    # 使用預定義的 serializer 來解碼郵件確認的 token
-    email = serializer.loads(token, salt='email-confirmation-salt')
+    try:
+        # 使用預定義的 serializer 來解碼郵件確認的 token
+        email = serializer.loads(token, salt='email-confirmation-salt')
+        print(f"解碼後的 email: {email}")  # 調試
 
-    # 如果 token 無效或過期，返回錯誤信息
-    if not email:
-        return jsonify({"error": "確認鏈接無效或已過期。"}), 400
+        # 查找與該 email 對應的用戶
+        customer = Customer.query.filter_by(email=email).first_or_404()
+        print(f"找到的用戶: {customer.email}, 驗證狀態: {customer.is_verified}")  # 調試
 
-    # 查找與該 email 對應的用戶，如果找不到則返回 404 錯誤
-    customer = Customer.query.filter_by(email=email).first_or_404()
+        # 如果郵箱未驗證，則設置用戶為已驗證
+        if not customer.is_verified:
+            customer.is_verified = True
+            db.session.commit()  # 保存更新到數據庫
+            print("用戶已驗證成功")  # 調試
 
-    # 如果用戶已經驗證過郵箱，則重定向到登錄頁面
-    if customer.is_verified:
-        return redirect(url_for('customer.member_login'))  # 使用 Blueprint 的名稱
+        # 根據用戶角色生成重定向 URL
+        role = customer.role
+        redirect_url = url_for('customer.login', role=role)
 
-    # 如果郵箱未驗證，則設置用戶為已驗證並更新角色為 'customer'
-    customer.is_verified = True
-    customer.role = 'customer'
-    db.session.commit()  # 保存更新到數據庫
+        # 渲染驗證成功頁面，並在該頁面設置自動跳轉到登入頁面
+        return render_template('shared/verification_success.html', redirect_url=redirect_url,role=role)
 
-    return jsonify({"status": "success", "message": "帳號已驗證成功。"}), 200  # 返回驗證成功的消息
-
-# 定義 dashboard 路由
-@customer_bp.route("/dashboard", methods=["GET"], endpoint='dashboard')
-@login_required # 確保只有登入的用戶能訪問此頁面
-def dashboard():
-    return render_template('customer/dashboard.html', customer_user=current_user)
+    except Exception as e:
+        # 記錄具體的錯誤信息
+        print(f"驗證失敗: {e}")
+        # 渲染驗證成功頁面，並在該頁面設置自動跳轉到登入頁面
+        return jsonify({"error": "確認鏈接無效或已過期"}), 400
 
 # 定義發送驗證郵件的輔助函數
 def send_verification_email(user_email):
@@ -119,7 +137,7 @@ def send_verification_email(user_email):
     confirm_url = url_for('customer.confirm_email', token=token, _external=True)  # 使用 Blueprint 名稱
     
     # 渲染郵件模板，並將確認鏈接添加到郵件中
-    html = render_template('customer/email_verification.html', confirm_url=confirm_url)
+    html = render_template('shared/email_verification.html', confirm_url=confirm_url)
     
     # 構建郵件對象，包括郵件主題、收件人和內容
     subject = "請確認你的郵件"
@@ -127,3 +145,11 @@ def send_verification_email(user_email):
     
     # 發送郵件
     mail.send(msg)
+
+
+#登出路由
+@customer_bp.route("/logout", methods=["GET"],endpoint='logout')
+@login_required # 確保只有登入的用戶可以執行登出操作
+def member_logout():
+    logout_user() #Flask-Login 的 logout_user 函數進行登出
+    return redirect(url_for('customer.login')) #重定向到登入頁面

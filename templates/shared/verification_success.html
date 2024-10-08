@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<body>
+    <div class="container">
+        <h1 class="text-success">帳號已驗證成功！</h1>
+        <p>3秒後會自動跳轉到對應頁面...</p>
+        <p>如果沒有自動跳轉，請點擊 <a href="{{ redirect_url }}">會員登入</a></p>
+        <!-- <p>如果沒有自動跳轉，請點擊 <a href="{{ url_for('customer.login') }}">會員登入</a></p> -->
+    </div>
+</body>
+<script>
+    // 使用JS 的setTimeout 設置3秒後跳轉
+    setTimeout(() => window.location.href = "{{ redirect_url }}", 5000); 
+</script>
+</html>

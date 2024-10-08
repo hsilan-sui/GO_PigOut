@@ -1,0 +1,276 @@
+{% extends 'shared/base.html' %}
+<!-- -->
+{% block content %}
+<div class="container py-5 h-100">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      <div class="card shadow-2-strong" style="border-radius: 1rem">
+        <div class="card-body p-5 text-center">
+          <h3 class="mb-5">登入</h3>
+
+          <!-- Bootstrap Nav Tabs for roles -->
+          <ul class="nav nav-tabs" id="loginTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link active"
+                id="customer-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#customer"
+                type="button"
+                role="tab"
+                aria-controls="customer"
+                aria-selected="true"
+              >
+                客戶登入
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="vendor-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#vendor"
+                type="button"
+                role="tab"
+                aria-controls="vendor"
+                aria-selected="false"
+              >
+                供應商登入
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="delivery-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#delivery"
+                type="button"
+                role="tab"
+                aria-controls="delivery"
+                aria-selected="false"
+              >
+                外送員登入
+              </button>
+            </li>
+          </ul>
+
+          <!-- Tab content for different roles -->
+          <div class="tab-content" id="loginTabContent">
+            <!-- 客戶登入 -->
+            <div
+              class="tab-pane fade show active"
+              id="customer"
+              role="tabpanel"
+              aria-labelledby="customer-tab"
+            >
+              <form
+                id="customer-login-form"
+                action="{{ url_for('customer.login') }}"
+                method="POST"
+                class="my-4"
+              >
+                <div class="form-outline mb-4">
+                  <input
+                    type="email"
+                    id="customer-email"
+                    class="form-control form-control-lg"
+                    name="email"
+                    required
+                  />
+                  <label class="form-label" for="customer-email">Email</label>
+                </div>
+                <div class="form-outline mb-4">
+                  <input
+                    type="password"
+                    id="customer-password"
+                    class="form-control form-control-lg"
+                    name="password"
+                    required
+                  />
+                  <label class="form-label" for="customer-password">密碼</label>
+                </div>
+                <div>
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-lg btn-block"
+                  >
+                    登入 (客戶)
+                  </button>
+                </div>
+
+                <div>
+                  <a
+                    href="{{ url_for('auth.login_google') }}"
+                    data-mdb-button-init
+                    data-mdb-ripple-init
+                    class="btn btn-lg btn-block btn-primary mb-2"
+                    style="background-color: #dd4b39"
+                    type="button"
+                  >
+                    <i class="fab fa-google me-2"></i> GOOGLE 帳號登入
+                  </a>
+                </div>
+
+                <div>
+                  <a
+                    data-mdb-button-init
+                    data-mdb-ripple-init
+                    class="btn btn-lg btn-block btn-primary mb-2"
+                    style="background-color: #3b5998"
+                    type="button"
+                  >
+                    <i class="fab fa-facebook-f me-2"></i>facebook 帳號登入
+                  </a>
+                </div>
+                <div id="result"></div>
+              </form>
+            </div>
+
+            <!-- 供應商登入 -->
+            <div
+              class="tab-pane fade"
+              id="vendor"
+              role="tabpanel"
+              aria-labelledby="vendor-tab"
+            >
+              <form
+                id="vendor-login-form"
+                action="{{ url_for('vendor.login') }}"
+                method="POST"
+                class="my-4"
+              >
+                <div class="form-outline mb-4">
+                  <input
+                    type="email"
+                    id="vendor-email"
+                    class="form-control form-control-lg"
+                    name="email"
+                    required
+                  />
+                  <label class="form-label" for="vendor-email">Email</label>
+                </div>
+                <div class="form-outline mb-4">
+                  <input
+                    type="password"
+                    id="vendor-password"
+                    class="form-control form-control-lg"
+                    name="password"
+                    required
+                  />
+                  <label class="form-label" for="vendor-password">密碼</label>
+                </div>
+
+                <div>
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-lg btn-block"
+                  >
+                    登入 (供應商)
+                  </button>
+                </div>
+
+                <div>
+                  <a
+                    href="{{ url_for('auth.login_google') }}"
+                    data-mdb-button-init
+                    data-mdb-ripple-init
+                    class="btn btn-lg btn-block btn-primary mb-2"
+                    style="background-color: #dd4b39"
+                    type="button"
+                  >
+                    <i class="fab fa-google me-2"></i> GOOGLE 帳號登入
+                  </a>
+                </div>
+
+                <div>
+                  <a
+                    data-mdb-button-init
+                    data-mdb-ripple-init
+                    class="btn btn-lg btn-block btn-primary mb-2"
+                    style="background-color: #3b5998"
+                    type="button"
+                  >
+                    <i class="fab fa-facebook-f me-2"></i>facebook 帳號登入
+                  </a>
+                </div>
+                <div id="result"></div>
+              </form>
+            </div>
+
+            <!-- 外送員登入 -->
+            <div
+              class="tab-pane fade"
+              id="delivery"
+              role="tabpanel"
+              aria-labelledby="delivery-tab"
+            >
+              <form
+                id="delivery-login-form"
+                action="{{ url_for('delivery.login') }}"
+                method="POST"
+                class="my-4"
+              >
+                <div class="form-outline mb-4">
+                  <input
+                    type="email"
+                    id="delivery-email"
+                    class="form-control form-control-lg"
+                    name="email"
+                    required
+                  />
+                  <label class="form-label" for="delivery-email">Email</label>
+                </div>
+                <div class="form-outline mb-4">
+                  <input
+                    type="password"
+                    id="delivery-password"
+                    class="form-control form-control-lg"
+                    name="password"
+                    required
+                  />
+                  <label class="form-label" for="delivery-password">密碼</label>
+                </div>
+
+                <div>
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-lg btn-block"
+                  >
+                    登入 (外送員)
+                  </button>
+                </div>
+
+                <div>
+                  <a
+                    href="{{ url_for('auth.login_google') }}"
+                    data-mdb-button-init
+                    data-mdb-ripple-init
+                    class="btn btn-lg btn-block btn-primary mb-2"
+                    style="background-color: #dd4b39"
+                    type="button"
+                  >
+                    <i class="fab fa-google me-2"></i> GOOGLE 帳號登入
+                  </a>
+                </div>
+
+                <div>
+                  <a
+                    data-mdb-button-init
+                    data-mdb-ripple-init
+                    class="btn btn-lg btn-block btn-primary mb-2"
+                    style="background-color: #3b5998"
+                    type="button"
+                  >
+                    <i class="fab fa-facebook-f me-2"></i>facebook 帳號登入
+                  </a>
+                </div>
+                <div id="result"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

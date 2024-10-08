@@ -1,3 +1,8 @@
-{% extends "base.html" %} {% block content %}
-<p><span>{{ user.email }}</span>登入成功</p>
+{% extends "shared/base.html" %} {% block content %}
+<a type="button" class="btn btn-warning" href="{{ url_for('customer.logout')}}"
+  >登出</a
+>
+<br />
+<p><span>歡迎你！{{ user.name }}</span>肚子餓了嗎？線上訂餐飽足一頓吧</p>
+
 {% endblock content %}

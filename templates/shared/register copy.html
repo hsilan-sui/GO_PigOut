@@ -1,0 +1,366 @@
+{% extends "shared/base.html" %}
+<!-- -->
+{% block content %}
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem">
+          <div class="card-body p-5 text-center" id="register-form">
+            <h3 class="mb-5">註冊</h3>
+
+            <!-- Bootstrap Nav Tabs for roles -->
+            <ul class="nav nav-tabs" id="registerTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link active"
+                  id="customer-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#customer"
+                  type="button"
+                  role="tab"
+                  aria-controls="customer"
+                  aria-selected="true"
+                >
+                  客戶註冊
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="vendor-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#vendor"
+                  type="button"
+                  role="tab"
+                  aria-controls="vendor"
+                  aria-selected="false"
+                >
+                  供應商註冊
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="delivery-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#delivery"
+                  type="button"
+                  role="tab"
+                  aria-controls="delivery"
+                  aria-selected="false"
+                >
+                  外送員註冊
+                </button>
+              </li>
+            </ul>
+
+            <!-- Tab content for different roles -->
+            <div class="tab-content" id="registerTabContent">
+              <!-- 客戶註冊 -->
+              <div
+                class="tab-pane fade show active"
+                id="customer"
+                role="tabpanel"
+                aria-labelledby="customer-tab"
+              >
+                <form id="customer-register-form" class="my-4">
+                  <div class="form-outline mb-4">
+                    <input
+                      type="text"
+                      id="customer-name"
+                      class="form-control form-control-lg"
+                    />
+                    <label class="form-label" for="customer-name">用戶名</label>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input
+                      type="email"
+                      id="customer-email"
+                      class="form-control form-control-lg"
+                    />
+                    <label class="form-label" for="customer-email">Email</label>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input
+                      type="password"
+                      id="customer-password"
+                      class="form-control form-control-lg"
+                    />
+                    <label class="form-label" for="customer-password"
+                      >密碼</label
+                    >
+                  </div>
+
+                  <div>
+                    <button
+                      class="btn btn-primary btn-lg btn-block"
+                      type="button"
+                      id="customer-register"
+                    >
+                      註冊 (客戶)
+                    </button>
+                  </div>
+
+                  <div>
+                    <a
+                      href="{{ url_for('auth.login_google') }}"
+                      data-mdb-button-init
+                      data-mdb-ripple-init
+                      class="btn btn-lg btn-block btn-primary mb-2"
+                      style="background-color: #dd4b39"
+                      type="button"
+                    >
+                      <i class="fab fa-google me-2"></i> GOOGLE 帳號登入
+                    </a>
+                  </div>
+
+                  <div>
+                    <a
+                      data-mdb-button-init
+                      data-mdb-ripple-init
+                      class="btn btn-lg btn-block btn-primary mb-2"
+                      style="background-color: #3b5998"
+                      type="button"
+                    >
+                      <i class="fab fa-facebook-f me-2"></i>facebook 帳號登入
+                    </a>
+                  </div>
+                  <div id="result"></div>
+                </form>
+              </div>
+
+              <!-- 供應商註冊 -->
+              <div
+                class="tab-pane fade"
+                id="vendor"
+                role="tabpanel"
+                aria-labelledby="vendor-tab"
+              >
+                <form id="vendor-register-form" class="my-4">
+                  <div class="form-outline mb-4">
+                    <input
+                      type="text"
+                      id="vendor-name"
+                      class="form-control form-control-lg"
+                    />
+                    <label class="form-label" for="vendor-name">用戶名</label>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input
+                      type="email"
+                      id="vendor-email"
+                      class="form-control form-control-lg"
+                    />
+                    <label class="form-label" for="vendor-email">Email</label>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input
+                      type="password"
+                      id="vendor-password"
+                      class="form-control form-control-lg"
+                    />
+                    <label class="form-label" for="vendor-password">密碼</label>
+                  </div>
+                  <div>
+                    <button
+                      class="btn btn-primary btn-lg btn-block"
+                      type="button"
+                      id="vendor-register"
+                    >
+                      註冊 (供應商)
+                    </button>
+                  </div>
+
+                  <div>
+                    <a
+                      href="{{ url_for('auth.login_google') }}"
+                      data-mdb-button-init
+                      data-mdb-ripple-init
+                      class="btn btn-lg btn-block btn-primary mb-2"
+                      style="background-color: #dd4b39"
+                      type="button"
+                    >
+                      <i class="fab fa-google me-2"></i> GOOGLE 帳號登入
+                    </a>
+                  </div>
+
+                  <div>
+                    <a
+                      data-mdb-button-init
+                      data-mdb-ripple-init
+                      class="btn btn-lg btn-block btn-primary mb-2"
+                      style="background-color: #3b5998"
+                      type="button"
+                    >
+                      <i class="fab fa-facebook-f me-2"></i>facebook 帳號登入
+                    </a>
+                  </div>
+                  <div id="result"></div>
+                </form>
+              </div>
+
+              <!-- 外送員註冊 -->
+              <div
+                class="tab-pane fade"
+                id="delivery"
+                role="tabpanel"
+                aria-labelledby="delivery-tab"
+              >
+                <form id="delivery-register-form" class="my-4">
+                  <div class="form-outline mb-4">
+                    <input
+                      type="text"
+                      id="delivery-name"
+                      class="form-control form-control-lg"
+                    />
+                    <label class="form-label" for="delivery-name">用戶名</label>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input
+                      type="email"
+                      id="delivery-email"
+                      class="form-control form-control-lg"
+                    />
+                    <label class="form-label" for="delivery-email">Email</label>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input
+                      type="password"
+                      id="delivery-password"
+                      class="form-control form-control-lg"
+                    />
+                    <label class="form-label" for="delivery-password"
+                      >密碼</label
+                    >
+                  </div>
+
+                  <div>
+                    <button
+                      class="btn btn-primary btn-lg btn-block"
+                      type="button"
+                      id="delivery-register"
+                    >
+                      註冊 (外送員)
+                    </button>
+                  </div>
+
+                  <div>
+                    <a
+                      href="{{ url_for('auth.login_google') }}"
+                      data-mdb-button-init
+                      data-mdb-ripple-init
+                      class="btn btn-lg btn-block btn-primary mb-2"
+                      style="background-color: #dd4b39"
+                      type="button"
+                    >
+                      <i class="fab fa-google me-2"></i> GOOGLE 帳號登入
+                    </a>
+                  </div>
+
+                  <div>
+                    <a
+                      data-mdb-button-init
+                      data-mdb-ripple-init
+                      class="btn btn-lg btn-block btn-primary mb-2"
+                      style="background-color: #3b5998"
+                      type="button"
+                    >
+                      <i class="fab fa-facebook-f me-2"></i>facebook 帳號登入
+                    </a>
+                  </div>
+                  <div id="result"></div>
+                </form>
+              </div>
+            </div>
+
+            <!-- 註冊結果區域 -->
+            <div id="result"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
+
+<!-- -->
+{% block script %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // 通用的註冊處理函數
+    function handleRegister(role, nameId, emailId, passwordId, url) {
+      const name = document.getElementById(nameId).value;
+      const email = document.getElementById(emailId).value;
+      const password = document.getElementById(passwordId).value;
+
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name: name, email: email, password: password }),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            window.location.href = "404.html";
+          }
+          return response.json();
+        })
+        .then((data) => {
+          const resultDiv = document.getElementById("result");
+          if (data.status === "success") {
+            resultDiv.innerHTML = `<p style="color: green;">${role} 註冊成功！</p>`;
+            window.location.href = data.redirect_url;
+          } else {
+            resultDiv.innerHTML = `<p style="color: red;">${data.message}</p>`;
+          }
+        })
+        .catch((error) => {
+          document.getElementById(
+            "result"
+          ).innerHTML = `<p style="color: red;">發生錯誤: ${error}</p>`;
+        });
+    }
+
+    // 客戶註冊事件
+    document
+      .getElementById("customer-register")
+      .addEventListener("click", function () {
+        handleRegister(
+          "客戶",
+          "customer-name",
+          "customer-email",
+          "customer-password",
+          "{{ url_for('customer.register') }}"
+        );
+      });
+
+    // 供應商註冊事件
+    document
+      .getElementById("vendor-register")
+      .addEventListener("click", function () {
+        handleRegister(
+          "供應商",
+          "vendor-name",
+          "vendor-email",
+          "vendor-password",
+          "{{ url_for('vendor.register') }}"
+        );
+      });
+
+    // 外送員註冊事件
+    document
+      .getElementById("delivery-register")
+      .addEventListener("click", function () {
+        handleRegister(
+          "外送員",
+          "delivery-name",
+          "delivery-email",
+          "delivery-password",
+          "{{ url_for('delivery.register') }}"
+        );
+      });
+  });
+</script>
+{% endblock script %}
