@@ -117,6 +117,9 @@ def send_verification_email(user_email):
 
     mail.send(msg)
 
+# @vendor_bp.route("/edit", methods=['GET','POST'], endpoint="edit")
+# @login_required
+# def edit_info() 
 
 @vendor_bp.route("/logout", methods=['GET'], endpoint="logout")
 @login_required #確保登入權限

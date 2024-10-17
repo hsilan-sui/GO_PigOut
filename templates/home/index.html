@@ -257,7 +257,7 @@
                 <div class="card-body">
                   <h5 class="card-title">${item.name}</h5>
                   <p class="card-text">新鮮可口的早餐，開始美好的一天！</p>
-                  <a href="#" id="menu-btn" class="btn btn-primary" data-id="1" >餐廳菜單</a>
+                  <a href="{{ url_for('home.restaurant_menu', vendor_id=1)}}" id="menu-btn" class="btn btn-primary" data-id="1" >餐廳菜單</a>
                 </div>
           </div>
         </div>
@@ -284,10 +284,10 @@
     const getVendorMenu = document.getElementById('menu-btn')
     //console.log(getVendorMenu)
 
-    getVendorMenu.addEventListener("click", function() {
-      const vendorMenuId = getVendorMenu.dataset.id;
-      window.location.href = `/restaurantMenu/${vendorMenuId}`;
-    });
+    //getVendorMenu.addEventListener("click", function() {
+     // const vendorMenuId = getVendorMenu.dataset.id;
+     // window.location.href = `/restaurantMenu`;
+    //});
   });
 </script>
 {% endblock script %}
