@@ -1,6 +1,4 @@
-{% extends "shared/base.html" %}
-<!-- -->
-{% block style %}
+{% extends "shared/base.html" %} {% block style %}
 <style>
   .category-icon {
     width: 50px;
@@ -28,91 +26,268 @@
     margin-top: 20px;
   }
 
-  /* Responsive styles */
-  @media (max-width: 768px) {
-    .category-container {
-      display: flex;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-    }
-
-    .category-icon {
-      margin: 0 10px;
-    }
+  .menu-item img {
+    width: 100%;
+    border-radius: 10px;
   }
+
+  .category-btns {
+    margin-bottom: 20px;
+  }
+
+  .price {
+    color: green;
+  }
+
+  /* Responsive styles */
 </style>
-{% endblock style %}
-<!-- -->
-{% block content %}
-<div class="container-fluid">
-  <!-- Category Section -->
-  <div class="category-container d-flex flex-wrap justify-content-center">
-    <div class="text-center">
-      <div class="category-icon">
-        <img src="https://via.placeholder.com/40" alt="Main Dishes" />
-      </div>
-      <p class="category-name">主食</p>
-    </div>
-    <div class="text-center">
-      <div class="category-icon">
-        <img src="https://via.placeholder.com/40" alt="BBQ" />
-      </div>
-      <p class="category-name">燒烤</p>
-    </div>
-    <div class="text-center">
-      <div class="category-icon">
-        <img src="https://via.placeholder.com/40" alt="Vegan" />
-      </div>
-      <p class="category-name">素食</p>
-    </div>
-    <div class="text-center">
-      <div class="category-icon">
-        <img src="https://via.placeholder.com/40" alt="Drinks" />
-      </div>
-      <p class="category-name">飲品</p>
-    </div>
-    <div class="text-center">
-      <div class="category-icon">
-        <img src="https://via.placeholder.com/40" alt="Desserts" />
-      </div>
-      <p class="category-name">冰品/甜點</p>
-    </div>
-    <!-- Add more categories as needed -->
-  </div>
-
-  <!-- Recommended Restaurants Section -->
-  <div class="row">
-    <h4 class="mt-4">推薦您附近的熱門餐廳</h4>
-
-    <div class="col-md-6 restaurant-card">
-      <div class="card">
-        <img
-          src="https://via.placeholder.com/400x200"
-          class="card-img-top"
-          alt="Restaurant 1"
-        />
-        <div class="card-body">
-          <h5 class="card-title">一號早餐店</h5>
-          <p class="card-text">新鮮可口的早餐，開始美好的一天！</p>
-          <a href="#" class="btn btn-primary">立即訂購</a>
+{% endblock style %}{% block content %}
+<div
+  class="category-container d-flex flex-wrap justify-content-center container-fluid"
+>
+  <!-- Category Buttons -->
+  <div class="category-btns">
+    <button class="btn btn-outline-primary category-btn" data-category="lunch">
+      <div class="text-center">
+        <div class="category-icon">
+          <img src="https://via.placeholder.com/40" alt="Main Dishes" />
         </div>
+        <p class="category-name">古早味</p>
       </div>
-    </div>
-
-    <div class="col-md-6 restaurant-card">
-      <div class="card">
-        <img
-          src="https://via.placeholder.com/400x200"
-          class="card-img-top"
-          alt="Restaurant 2"
-        />
-        <div class="card-body">
-          <h5 class="card-title">阿二健康餐點</h5>
-          <p class="card-text">美味健康餐點，給你一整天的能量。</p>
-          <a href="#" class="btn btn-primary">立即訂購</a>
+    </button>
+    <button class="btn btn-outline-primary category-btn" data-category="salad">
+      <div class="text-center">
+        <div class="category-icon">
+          <img src="https://via.placeholder.com/40" alt="BBQ" />
         </div>
+        <p class="category-name">韓式料理</p>
       </div>
-    </div>
+    </button>
+    <button class="btn btn-outline-primary category-btn" data-category="burger">
+      <div class="text-center">
+        <div class="category-icon">
+          <img src="https://via.placeholder.com/40" alt="Vegan" />
+        </div>
+        <p class="category-name">日本料理</p>
+      </div>
+    </button>
+    <button class="btn btn-outline-primary category-btn" data-category="coffee">
+      <div class="text-center">
+        <div class="category-icon">
+          <img src="https://via.placeholder.com/40" alt="Drinks" />
+        </div>
+        <p class="category-name">飲品</p>
+      </div>
+    </button>
+    <button
+      class="btn btn-outline-primary category-btn"
+      data-category="dessert"
+    >
+      <div class="text-center">
+        <div class="category-icon">
+          <img src="https://via.placeholder.com/40" alt="Desserts" />
+        </div>
+        <p class="category-name">冰品/甜點</p>
+      </div>
+    </button>
   </div>
 </div>
-{% endblock content %}
+  <!-- Recommended Restaurants Section -->
+  <h3>美味的雲端餐廳</h3>
+  <div class="row" id="menu-items">
+    <!-- Menu Items -->
+  </div>
+</div>
+
+{% endblock content %}<!-- 客製化other_element 區塊  end-->
+{% block script %}
+
+<script>
+  const menuData = {
+    lunch: [
+      {
+        name: "七彩雲南",
+        price: "$16.50",
+        img: "https://via.placeholder.com/150",
+        time: "16 mins to cook",
+      },
+      {
+        name: "韓國大叔",
+        price: "$12.40",
+        img: "https://via.placeholder.com/150",
+        time: "16 mins to cook",
+      },
+      {
+        name: "Chef's Salmon",
+        price: "$12.40",
+        img: "https://via.placeholder.com/150",
+        time: "16 mins to cook",
+      },
+      {
+        name: "Chef's Salmon",
+        price: "$12.40",
+        img: "https://via.placeholder.com/150",
+        time: "16 mins to cook",
+      },
+    ],
+    salad: [
+      {
+        name: "Caesar Salad",
+        price: "$8.50",
+        img: "https://via.placeholder.com/150",
+        time: "10 mins to cook",
+      },
+      {
+        name: "Greek Salad",
+        price: "$9.00",
+        img: "https://via.placeholder.com/150",
+        time: "12 mins to cook",
+      },
+      {
+        name: "Greek Salad",
+        price: "$9.00",
+        img: "https://via.placeholder.com/150",
+        time: "12 mins to cook",
+      },
+      {
+        name: "Greek Salad",
+        price: "$9.00",
+        img: "https://via.placeholder.com/150",
+        time: "12 mins to cook",
+      },
+    ],
+    burger: [
+      {
+        name: "Cheeseburger",
+        price: "$7.50",
+        img: "https://via.placeholder.com/150",
+        time: "15 mins to cook",
+      },
+      {
+        name: "Veggie Burger",
+        price: "$8.00",
+        img: "https://via.placeholder.com/150",
+        time: "12 mins to cook",
+      },
+      {
+        name: "Veggie Burger",
+        price: "$8.00",
+        img: "https://via.placeholder.com/150",
+        time: "12 mins to cook",
+      },
+      {
+        name: "Veggie Burger",
+        price: "$8.00",
+        img: "https://via.placeholder.com/150",
+        time: "12 mins to cook",
+      },
+    ],
+    coffee: [
+      {
+        name: "Latte",
+        price: "$4.50",
+        img: "https://via.placeholder.com/150",
+        time: "5 mins to brew",
+      },
+      {
+        name: "Cappuccino",
+        price: "$4.00",
+        img: "https://via.placeholder.com/150",
+        time: "5 mins to brew",
+      },
+      {
+        name: "Cappuccino",
+        price: "$4.00",
+        img: "https://via.placeholder.com/150",
+        time: "5 mins to brew",
+      },
+      {
+        name: "Cappuccino",
+        price: "$4.00",
+        img: "https://via.placeholder.com/150",
+        time: "5 mins to brew",
+      },
+    ],
+    dessert: [
+      {
+        name: "Chocolate Cake",
+        price: "$5.50",
+        img: "https://via.placeholder.com/150",
+        time: "20 mins to prepare",
+      },
+      {
+        name: "Ice Cream Sundae",
+        price: "$4.50",
+        img: "https://via.placeholder.com/150",
+        time: "10 mins to prepare",
+      },
+      {
+        name: "Chocolate Cake",
+        price: "$5.50",
+        img: "https://via.placeholder.com/150",
+        time: "20 mins to prepare",
+      },
+      {
+        name: "Chocolate Cake",
+        price: "$5.50",
+        img: "https://via.placeholder.com/150",
+        time: "20 mins to prepare",
+      },
+    ],
+  };
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const categoryButtons = document.querySelectorAll(".category-btn");
+    const menuContainer = document.getElementById("menu-items");
+
+    // Function to load menu items based on category
+    function loadMenuItems(category) {
+      menuContainer.innerHTML = ""; // Clear previous content
+      const items = menuData[category];
+
+      items.forEach((item) => {
+        const menuItem = `
+            <div class="col-lg-3 col-md-4 col-12 restaurant-card">
+              <div class="card">
+                <img
+                  src="https://via.placeholder.com/200x200"
+                  class="card-img-top"
+                  alt="Restaurant 1"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">${item.name}</h5>
+                  <p class="card-text">新鮮可口的早餐，開始美好的一天！</p>
+                  <a href="#" id="menu-btn" class="btn btn-primary" data-id="1" >餐廳菜單</a>
+                </div>
+          </div>
+        </div>
+          `;
+        menuContainer.innerHTML += menuItem;
+      });
+
+    }
+
+    // Load "Lunch" menu by default
+    loadMenuItems("lunch");
+
+    // Add event listeners to category buttons
+    categoryButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        const category = this.getAttribute("data-category");
+        loadMenuItems(category);
+      });
+    });
+
+
+
+      //點擊按鈕 => GET MENU
+    const getVendorMenu = document.getElementById('menu-btn')
+    //console.log(getVendorMenu)
+
+    getVendorMenu.addEventListener("click", function() {
+      const vendorMenuId = getVendorMenu.dataset.id;
+      window.location.href = `/restaurantMenu/${vendorMenuId}`;
+    });
+  });
+</script>
+{% endblock script %}

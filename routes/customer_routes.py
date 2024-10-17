@@ -152,3 +152,6 @@ def send_verification_email(user_email):
 def member_logout():
     logout_user() #Flask-Login 的 logout_user 函數進行登出
     return redirect(url_for('customer.login')) #重定向到登入頁面
+
+
+# --------------------

@@ -7,3 +7,4 @@ home_bp = Blueprint('home', __name__)
 @home_bp.route("/", endpoint='index')
 def index():
     return render_template('home/index.html')  # 渲染首頁模板
+    #return render_template('customer/order.html')  # 渲染首頁模板

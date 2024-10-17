@@ -1,0 +1,118 @@
+{% extends "shared/base.html" %}
+<!-- -->
+{% block style %}
+<style>
+  .category-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+  }
+
+  .category-name {
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: center;
+  }
+
+  .restaurant-card img {
+    width: 100%;
+    height: auto;
+  }
+
+  .restaurant-card {
+    margin-top: 20px;
+  }
+
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .category-container {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+
+    .category-icon {
+      margin: 0 10px;
+    }
+  }
+</style>
+{% endblock style %}
+<!-- -->
+{% block content %}
+<div class="container-fluid">
+  <!-- Category Section -->
+  <div class="category-container d-flex flex-wrap justify-content-center">
+    <div class="text-center">
+      <div class="category-icon">
+        <img src="https://via.placeholder.com/40" alt="Main Dishes" />
+      </div>
+      <p class="category-name">主食</p>
+    </div>
+    <div class="text-center">
+      <div class="category-icon">
+        <img src="https://via.placeholder.com/40" alt="BBQ" />
+      </div>
+      <p class="category-name">燒烤</p>
+    </div>
+    <div class="text-center">
+      <div class="category-icon">
+        <img src="https://via.placeholder.com/40" alt="Vegan" />
+      </div>
+      <p class="category-name">素食</p>
+    </div>
+    <div class="text-center">
+      <div class="category-icon">
+        <img src="https://via.placeholder.com/40" alt="Drinks" />
+      </div>
+      <p class="category-name">飲品</p>
+    </div>
+    <div class="text-center">
+      <div class="category-icon">
+        <img src="https://via.placeholder.com/40" alt="Desserts" />
+      </div>
+      <p class="category-name">冰品/甜點</p>
+    </div>
+    <!-- Add more categories as needed -->
+  </div>
+
+  <!-- Recommended Restaurants Section -->
+  <div class="row">
+    <h4 class="mt-4">推薦您附近的熱門餐廳</h4>
+
+    <div class="col-md-6 restaurant-card">
+      <div class="card">
+        <img
+          src="https://via.placeholder.com/400x200"
+          class="card-img-top"
+          alt="Restaurant 1"
+        />
+        <div class="card-body">
+          <h5 class="card-title">一號早餐店</h5>
+          <p class="card-text">新鮮可口的早餐，開始美好的一天！</p>
+          <a href="#" class="btn btn-primary">立即訂購</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 restaurant-card">
+      <div class="card">
+        <img
+          src="https://via.placeholder.com/400x200"
+          class="card-img-top"
+          alt="Restaurant 2"
+        />
+        <div class="card-body">
+          <h5 class="card-title">阿二健康餐點</h5>
+          <p class="card-text">美味健康餐點，給你一整天的能量。</p>
+          <a href="#" class="btn btn-primary">立即訂購</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
