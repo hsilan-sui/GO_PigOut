@@ -71,6 +71,7 @@ class MenuItem(db.Model):
     description = db.Column(db.Text, nullable=True)
     available = db.Column(db.Boolean, default=True)
     #created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    category = db.Column(db.String(50), nullable=True)  # 新增的菜品類別欄位
     created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
     
     # 关联到 CartItem 和 OrderItem

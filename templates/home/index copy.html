@@ -48,11 +48,11 @@
 <!--Google 地圖-->
 <h3>google map測試</h3>
 <div style="display: flex;">
-  <div id="map" style="width: 100%; height: 50vh;"></div>
+  <div id="map" style="width: 50%; height: 50vh;"></div>
 </div>
 <!--banner-->
 <div
-  class="category-container d-flex flex-wrap justify-content-center container-fluid mt-3"
+  class="category-container d-flex flex-wrap justify-content-center container-fluid"
 >
 
   <!-- Category Buttons -->
@@ -267,7 +267,7 @@
                 <div class="card-body">
                   <h5 class="card-title">${item.name}</h5>
                   <p class="card-text">新鮮可口的早餐，開始美好的一天！</p>
-                  <a href="{{ url_for('home.restaurant_menu', vendor_id=4)}}" id="menu-btn" class="btn btn-primary" data-id="4" >餐廳菜單</a>
+                  <a href="{{ url_for('home.restaurant_menu', vendor_id=1)}}" id="menu-btn" class="btn btn-primary" data-id="1" >餐廳菜單</a>
                 </div>
           </div>
         </div>
@@ -303,7 +303,6 @@
         //console.log(position)
         const { latitude } = position.coords
         const { longitude } = position.coords
-        console.log(latitude, longitude)
       }, function() {
         alert('無法取得你目前的位置')
       })
@@ -324,6 +323,7 @@
   
 </script>
 <!-- 使用從 Flask 傳遞過來的 my_key 變量 -->
+
 <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
         ({key: "{{ my_key }}", v: "weekly"});</script>
  <script>
@@ -332,7 +332,7 @@
 
     async function initMap() {
       // 預設位置經緯度
-      const defaultPosition = { lat: 25.0399466, lng:121.5097594 };
+      const defaultPosition = { lat: 24.8421033, lng:118.992123 };
 
       const { Map } = await google.maps.importLibrary("maps");
       const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
@@ -340,17 +340,38 @@
       // 初始化地圖，置中到預設位置
       map = new Map(document.querySelector('#map'), {
         center: defaultPosition,
-        zoom: 17,
-        mapId: "DEMO_MAP_ID" 
+        zoom: 7,
+        mapId: "YOUR_MAP_ID_HERE" 
       });
 
-    // 添加使用者當前位置的標記
+      // 更新地圖中心為使用者當前位置
+        map.setCenter(currentPosition);
+        map.setZoom(16);
+
+        // 添加使用者當前位置的標記
         const marker = new AdvancedMarkerElement({
           map: map,
-          position: defaultPosition,  // 使用當前位置，而不是預設位置
+          position: currentPosition,  // 使用當前位置，而不是預設位置
           title: "你在這裡"
-        });  
-    
+        });
+      // 取得使用者當前地理位置
+      navigator.geolocation.getCurrentPosition(function(position) {
+        currentPosition = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+        };
+
+        // 更新地圖中心為使用者當前位置
+        map.setCenter(currentPosition);
+        map.setZoom(16);
+
+        // 添加使用者當前位置的標記
+        const marker = new AdvancedMarkerElement({
+          map: map,
+          position: currentPosition,  // 使用當前位置，而不是預設位置
+          title: "你在這裡"
+        });
+    });
     }
 
     initMap();
