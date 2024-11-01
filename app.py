@@ -1,7 +1,7 @@
 from flask import Flask,render_template
 from extensions import db, migrate, login_manager, mail, oauth
 #from routes import routes_bp  # 匯入自定義的主路由 Blueprint
-from routes import home_bp, customer_bp, vendor_bp, delivery_bp # 匯入拆分的 Blueprint
+from routes import home_bp, customer_bp, vendor_bp, delivery_bp, order_bp# 匯入拆分的 Blueprint
 from auth import auth_bp  # 匯入自定義的身份驗證（Google OAuth） Blueprint
 from models import * # 匯入 Customer 模型，用來管理數據庫中的客戶數據
 
@@ -37,7 +37,7 @@ app.register_blueprint(home_bp)  # 根路徑首頁
 app.register_blueprint(customer_bp, url_prefix='/customer')
 app.register_blueprint(vendor_bp, url_prefix='/vendor')
 app.register_blueprint(delivery_bp, url_prefix='/delivery')
-
+app.register_blueprint(order_bp, url_prefix='/order')
 # auth_bp: 負責處理身份驗證相關的路由（如 Google OAuth 登錄）
 # url_prefix='/auth': 指定該 Blueprint 路由的前綴 URL
 app.register_blueprint(auth_bp, url_prefix='/auth')

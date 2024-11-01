@@ -1,6 +1,4 @@
-{% extends "shared/base.html" %}
-<!--  -->
-{% block style%}
+{% extends "shared/base.html" %} {% block style%}
 <style>
   /* 隱藏右側訂單區在小於1024px時 */
   @media (max-width: 1200px) {
@@ -81,7 +79,6 @@
             <div
               class="card single-menu"
               style="width: 10rem"
-              data-id="{{ item.id }}"
               data-name="{{ item.name }}"
               data-price="{{ item.price | int}}"
               data-description="{{ item.description}}"
@@ -326,17 +323,16 @@
     .addEventListener("click", function (event) {
       const menuCard = event.target.closest(".card.single-menu");
       if (menuCard) {
-        const id = menuCard.getAttribute("data-id"); // 取得商品 ID
         const name = menuCard.getAttribute("data-name");
         const price = Number(menuCard.getAttribute("data-price"));
         const description = menuCard.getAttribute("data-description");
-        addToCart({ id, name, price, description }); // 確保這裡包含 id
+        addToCart({ name, price, description });
       }
     });
 
   // 加入購物車邏輯
   function addToCart(item) {
-    const existingItem = cart.find((cartItem) => cartItem.id === item.id);
+    const existingItem = cart.find((cartItem) => cartItem.name === item.name);
     existingItem
       ? existingItem.quantity++
       : cart.push({ ...item, quantity: 1 });
@@ -433,72 +429,63 @@
   });
 
   //結帳功能
-  document.querySelectorAll(".checkout-btn").forEach((button) => {
-    button.addEventListener("click", function (event) {
-      const device = event.target.getAttribute("data-device");
-      const paymentMethod = document.querySelector(
-        `input[name="payment-method-${device}"]:checked`
-      )?.value;
+  // 結帳處理函數
+  function checkout(event) {
+    // 獲取點擊的按鈕所屬的裝置 (desktop or mobile)
+    const device = event.target.getAttribute("data-device");
 
-      if (!paymentMethod) {
-        alert("請選擇付款方式");
-        return;
-      }
+    // 根據裝置選擇相應的付款方式組
+    const paymentMethod = document.querySelector(
+      `input[name="payment-method-${device}"]:checked`
+    )?.value;
 
-      // 檢查是否登入
-      fetch("/customer/check-login-status")
-        .then((response) => response.json())
-        .then((data) => {
-          if (!data.logged_in) {
-            // 保存購物車狀態到 localStorage
-            localStorage.setItem("savedCart", localStorage.getItem("cart"));
-            localStorage.setItem("redirectAfterLogin", "checkout");
+    if (!paymentMethod) {
+      alert("請選擇付款方式");
+      return;
+    }
+    console.log(`選擇的付款方式: ${paymentMethod} (裝置: ${device})`);
 
-            // 重導至登入頁面
-            window.location.href = "/customer/login";
-          } else {
-            // 已登入情況下直接處理結帳
-            processCheckout(paymentMethod);
-          }
-        });
-    });
-  });
-
-  // 結帳處理函數，將購物車和付款方式發送到後端
-  function processCheckout(paymentMethod) {
-    // 從 localStorage 中獲取購物車資料
+    // 獲取購物車內容
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
 
+    // 判斷購物車不能為空
     if (cart.length === 0) {
       alert("購物車是空的，無法結帳");
       return;
     }
 
-    //發送結帳請求
-    fetch("/order/checkout", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ cart, paymentMethod }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json(); // 確保返回的是 JSON
-      })
+    // 檢查使用者登入狀態
+    fetch("/customer/check-login-status")
+      .then((response) => response.json())
       .then((data) => {
-        if (data.status === "success") {
-          if (paymentMethod === "linepay") {
-            console.log("good");
-            window.location.href = data.paymentUrl; // 跳轉到 Linepay 支付頁面
-          } else {
-            alert("跳轉到信用卡支付頁面");
-          }
+        if (!data.logged_in) {
+          // 保存購物車狀態到 localStorage 並重導至登入頁面
+          localStorage.setItem("savedCart", localStorage.getItem("cart"));
+          localStorage.setItem("redirectAfterLogin", "checkout");
+          alert("請先登入");
+          window.location.href = "/customer/login";
         } else {
-          alert(data.message || "結帳失敗");
+          console.log("已登入");
+          // 已登入情況下直接處理結帳
+          processCheckout(paymentMethod);
         }
-      })
-      .catch((error) => console.error("Error:", error));
+      });
+  }
+
+  // 綁定所有「結帳」按鈕
+  document
+    .querySelectorAll(".checkout-btn")
+    .forEach((button) => button.addEventListener("click", checkout));
+
+  // 結帳處理函數，處理不同付款方式的邏輯
+  function processCheckout(paymentMethod) {
+    if (paymentMethod === "linepay") {
+      // Linepay 金流處理邏輯
+      window.location.href = "/linepay"; // 替換成實際的 Linepay 路徑
+    } else {
+      // 其他付款方式的處理
+      alert("選擇的付款方式尚未實現");
+    }
   }
 </script>
 {% endblock script %}

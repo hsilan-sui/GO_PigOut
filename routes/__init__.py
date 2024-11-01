@@ -6,6 +6,7 @@ from .home_routes import home_bp
 from .customer_routes import customer_bp
 from .vendor_routes import vendor_bp
 from .delivery_routes import delivery_bp
+from .order_routes import order_bp 
 
 # 將 Blueprint 匯出，供其他模塊使用
-__all__ = ['home_bp','customer_bp', 'vendor_bp', 'delivery_bp']
+__all__ = ['home_bp','customer_bp', 'vendor_bp', 'delivery_bp', 'order_bp']

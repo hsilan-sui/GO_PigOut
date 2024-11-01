@@ -74,6 +74,10 @@
                   </div>
                   <div class="offcanvas-body">
                     <div class="d-grid gap-2 mx-auto">
+                      {% if current_user.is_authenticated %}
+                    <span>歡迎你！{{ current_user.name }}</span>
+                    <a href="{{ url_for('customer.logout') }}" class="btn btn-warning">登出</a>
+                {% else %}
                       <a
                         href="{{ url_for('customer.register') }}"
                         class="btn btn-primary"
@@ -86,6 +90,7 @@
                         type="button"
                         >登入</a
                       >
+                       {% endif %}
                     </div>
                     <ul
                       class="navbar-nav justify-content-end flex-grow-1 pe-3 mt-3"

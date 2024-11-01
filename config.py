@@ -20,6 +20,10 @@ class Config:
     # 設置 SQLAlchemy 的數據庫連接 URL，從環境變數讀取 `DATABASE_URL`
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
 
+    # Line Pay 配置
+    LINEPAY_CHANNEL_ID = os.getenv('LINEPAY_CHANNEL_ID')
+    LINEPAY_CHANNEL_SECRET = os.getenv('LINEPAY_CHANNEL_SECRET')
+
     # 郵件服務配置
     MAIL_SERVER = 'smtp.gmail.com'  # 郵件服務的主機地址，這裡使用 Gmail 的 SMTP 服務
     MAIL_PORT = 587  # Gmail SMTP 端口

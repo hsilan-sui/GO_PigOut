@@ -154,4 +154,27 @@ def member_logout():
     return redirect(url_for('customer.login')) #重定向到登入頁面
 
 
+
+
+# 檢查登入狀態
+@customer_bp.route('/check-login-status')
+def check_login_status():
+    return jsonify(logged_in=current_user.is_authenticated)
 # --------------------
+
+# 點擊單一餐廳頁面(要帶入餐廳動態id)
+# @customer_bp.route("/restaurantMenu", methods=['GET'])
+# @login_required
+# def get_menu():
+#     # 模擬從資料庫或其他來源獲取數
+#     menu = {
+#         "restaurant_id": restaurant_id,
+#         "items": [
+#             {"name": "Pizza", "price": 9.99},
+#             {"name": "Pasta", "price": 7.99},
+#             {"name": "Salad", "price": 5.99}
+#         ]
+#     }
+    
+#     # 渲染模板，傳遞菜單數據
+#     return render_template('customer/order.html', menu=menu)

@@ -293,9 +293,12 @@
     //console.log(getVendorMenu)
 
     getVendorMenu.addEventListener("click", function() {
-      const vendorMenuId = getVendorMenu.dataset.id;
+      //const vendorMenuId = getVendorMenu.dataset.id;
+      const vendorMenuId = 4; //暫時
       window.location.href = `/restaurantMenu/${vendorMenuId}`;
     });
   });
+
+  
 </script>
 {% endblock script %}
